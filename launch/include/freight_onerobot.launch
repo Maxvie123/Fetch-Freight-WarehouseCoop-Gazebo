@@ -1,0 +1,29 @@
+<launch>
+
+  <arg name="robot_name"/>
+  <arg name="x" default="0.0" />
+  <arg name="y" default="0.0" />
+  <arg name="z" default="0.0" />
+  <arg name="yaw" default="0.0" />
+
+  <!-- Setup controllers -->
+  <!-- <rosparam file="$(find fetch_gazebo)/config/freight_controllers.yaml" command="load" /> -->
+
+   <!-- Add joint state publisher  -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+    <param name="use_gui" value="false"/>
+  </node>
+
+  <!-- urdf file for freight robot -->
+  <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/freight.gazebo.xacro" />
+
+  <!-- URDF and TF support -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
+    <param name="publish_frequency" value="100.0"/>
+  </node>
+
+  <!-- Put a robot in gazebo, make it look pretty -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -model $(arg robot_name) -file $(find warehousetest)/robots/freight.urdf"/>    
+    
+</launch>

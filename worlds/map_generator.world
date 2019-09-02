@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="Warehouse">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="rack1">
+      <pose>-2 0 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="rack2">
+      <pose>-2 6 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="rack3">
+      <pose>-2 -6 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="rack4">
+      <pose>2 -6 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="rack5">
+      <pose>2 0 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="rack6">
+      <pose>2 6 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="rack7">
+      <pose>-6 0 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="rack8">
+      <pose>-6 6 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="rack9">
+      <pose>-6 -6 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="rack10">
+      <pose>6 -6  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="rack11">
+      <pose>6 0 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    <model name="rack12">
+      <pose>6 6 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://rackcube.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+  </world>
+</sdf>
