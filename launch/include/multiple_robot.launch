@@ -3,6 +3,8 @@
   <!-- No namespace here as we will share this description. 
        Access with slash at the beginning -->    
 
+  <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/freight.gazebo.xacro" />
+
   <!-- BEGIN FREIGHT_ROBOT 1 -->
   <group ns="robot1">
     <param name="tf_prefix" value="robot1_tf" />
@@ -22,22 +24,22 @@
     </include>
   </group>
   <!-- BEGIN FETCH_ROBOT 1 -->
-  <group ns="robot3">
+<!--   <group ns="robot3">
     <param name="tf_prefix" value="robot3_tf" />
     <include file="$(find warehousetest)/launch/include/fetch_onerobot.launch" >
       <arg name="x" value ="0" />
       <arg name="y" value ="0" />
       <arg name="robot_name" value="Fetch_Robot1" />
     </include>
-  </group>
+  </group> -->
   <!-- BEGIN FETCH_ROBOT 2 -->
-  <group ns="robot4">
+<!--   <group ns="robot4">
     <param name="tf_prefix" value="robot4_tf" />
     <include file="$(find warehousetest)/launch/include/fetch_onerobot.launch" >
       <arg name="x" value ="-10" />
       <arg name="y" value ="10" />
       <arg name="robot_name" value="Fetch_Robot2" />
     </include>
-  </group>
+  </group> -->
 
 </launch>

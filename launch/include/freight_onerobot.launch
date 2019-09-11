@@ -10,9 +10,9 @@
   <!-- <rosparam file="$(find fetch_gazebo)/config/freight_controllers.yaml" command="load" /> -->
 
    <!-- Add joint state publisher  -->
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+<!--   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
     <param name="use_gui" value="false"/>
-  </node>
+  </node> -->
 
   <!-- urdf file for freight robot -->
   <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/freight.gazebo.xacro" />
@@ -24,6 +24,13 @@
 
   <!-- Put a robot in gazebo, make it look pretty -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-        args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -model $(arg robot_name) -file $(find warehousetest)/robots/freight.urdf"/>    
+        args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -model $(arg robot_name) -param robot_description"/> 
+
+  <rosparam command="load"
+            file="$(find warehousetest)/config/freight_controllers.yaml"
+            ns="freight_base_controller" />  
+  <node name="freight_controller" pkg="controller_manager" type="spawner"
+    args="freight_base_controller"/>
+ 
     
 </launch>

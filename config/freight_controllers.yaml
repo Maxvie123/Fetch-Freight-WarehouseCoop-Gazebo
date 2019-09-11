@@ -1,33 +1,39 @@
-base_controller:
-  type: "robot_controllers/DiffDriveBaseController"
-  max_velocity_x: 2.0
-  max_acceleration_x: 1.5
-  autostart: true
+  type        : "diff_drive_controller/DiffDriveController"
+  left_wheel  : 'l_wheel_joint'
+  right_wheel : 'r_wheel_joint'
+  publish_rate: 50.0               # default: 50
+  pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
+  twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
 
-gazebo:
-  default_controllers:
-    - "base_controller"
-  l_wheel_joint:
-    position:
-      p: 0.0
-      d: 0.0
-      i: 0.0
-      i_clamp: 0.0
-    velocity:
-      p: 8.85
-      d: 0.0
-      i: 0.5
-      i_clamp: 6.0
-    effort_limit: 8.85
-  r_wheel_joint:
-    position:
-      p: 0.0
-      d: 0.0
-      i: 0.0
-      i_clamp: 0.0
-    velocity:
-      p: 8.85
-      d: 0.0
-      i: 0.5
-      i_clamp: 6.0
-    effort_limit: 8.85
+  # Wheel separation and diameter. These are both optional.
+  # diff_drive_controller will attempt to read either one or both from the
+  # URDF if not specified as a parameter
+  # wheel_separation : 1.0
+  wheel_radius : 0.14
+
+  # Wheel separation and radius multipliers
+  # wheel_separation_multiplier: 1.0 # default: 1.0
+  # wheel_radius_multiplier    : 1.0 # default: 1.0
+
+  # Velocity commands timeout [s], default 0.5
+  # cmd_vel_timeout: 0.25
+
+  # Base frame_id
+  # base_frame_id: base_footprint #default: base_link
+
+  # Velocity and acceleration limits
+  # Whenever a min_* is unspecified, default to -max_*
+  linear:
+    x:
+      has_velocity_limits    : true
+      max_velocity           : 2.0  # m/s
+      min_velocity           : -0.5 # m/s
+      has_acceleration_limits: true
+      max_acceleration       : 1.5  # m/s^2
+      min_acceleration       : -0.4 # m/s^2
+  angular:
+    z:
+      has_velocity_limits    : true
+      max_velocity           : 1.7  # rad/s
+      has_acceleration_limits: true
+      max_acceleration       : 1.5  # rad/s^2
