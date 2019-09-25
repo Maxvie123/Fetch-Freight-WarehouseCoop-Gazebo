@@ -32,5 +32,8 @@
   <node name="freight_controller" pkg="controller_manager" type="spawner"
     args="freight_base_controller"/>
  
+  <node name="publish_base_scan_raw" pkg="topic_tools" type="relay" args="base_scan base_scan_raw" >
+    <param name="lazy" type="bool" value="True"/>
+  </node>
     
 </launch>

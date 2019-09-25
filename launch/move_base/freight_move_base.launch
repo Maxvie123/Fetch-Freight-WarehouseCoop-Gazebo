@@ -1,0 +1,15 @@
+<launch>    
+  <!--- Run AMCL -->
+  <include file="$(find amcl)/examples/amcl_diff.launch" />
+
+  <!-- Define your move_base node -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find your_pkg)/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find your_pkg)/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find your_pkg)/local_costmap_params.yaml"  command="load" />
+    <rosparam file="$(find your_pkg)/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find your_pkg)/base_local_planner_params.yaml" command="load" />
+
+    <remap from="map" to="/map" />
+  </node>
+</launch>
