@@ -16,6 +16,7 @@
 
   <!-- urdf file for freight robot -->
   <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/freight.gazebo.xacro" />
+  <param name="robot_name" type="str" value="$(arg robot_name)" />
 
   <!-- URDF and TF support -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
@@ -31,9 +32,6 @@
             ns="freight_base_controller" />  
   <node name="freight_controller" pkg="controller_manager" type="spawner"
     args="freight_base_controller"/>
- 
-  <node name="publish_base_scan_raw" pkg="topic_tools" type="relay" args="base_scan base_scan_raw" >
-    <param name="lazy" type="bool" value="True"/>
-  </node>
+  <node name="odom_pub" pkg="warehousetest" type="robot_odom_pub.py" />
     
 </launch>

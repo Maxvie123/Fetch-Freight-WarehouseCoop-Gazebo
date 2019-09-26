@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 
+import rospy
 from nav_msgs.msg import Odometry
 from std_msgs.msg import Header
 from gazebo_msgs.srv import GetModelState, GetModelStateRequest
@@ -11,12 +12,12 @@ rospy.init_node('odom_pub')
 robot_name=rospy.get_param('robot_name')
 
 #publish the odom infomation in parent namespace
-odom_pub=rospy.Publisher ('odom', odometry)
+odom_pub=rospy.Publisher ('odom', Odometry,queue_size=50)
 
 
 # wait for the 'gazebo/get_model_state' service launch
 rospy.wait_for_service ('/gazebo/get_model_state')
-get_model_srv = rospy.ServiceProxy('/gazebo/get_model_state', GetModelstate)
+get_model_srv = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
 
 odom=Odometry()
 header = Header()
