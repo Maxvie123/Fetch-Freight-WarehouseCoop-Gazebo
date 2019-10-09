@@ -22,10 +22,11 @@ get_model_srv = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
 odom=Odometry()
 header = Header()
 header.frame_id=robot_name +'/odom'
+odom.child_frame_id = robot_name +'_tf/base_link'
 
 model = GetModelStateRequest()
 model.model_name=robot_name
-model.relative_entity_name='plane'
+model.relative_entity_name='ground_plane'
 
 r = rospy.Rate(10)
 
@@ -38,6 +39,6 @@ while not rospy.is_shutdown():
     header.stamp = rospy.Time.now()
     odom.header = header
 
-    odom_pub.publish (odom)
+    odom_pub.publish(odom)
 
     r.sleep()

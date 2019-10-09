@@ -30,8 +30,10 @@
   <rosparam command="load"
             file="$(find warehousetest)/config/freight_controllers.yaml"
             ns="freight_base_controller" />  
-  <node name="freight_controller" pkg="controller_manager" type="spawner"
-    args="freight_base_controller"/>
+  <node name="freight_base_controller" pkg="controller_manager" type="spawner" args="freight_base_controller">
+    <param name="base_frame_id" value="$(arg robot_name)_tf/base_link" />
+    <param name="odom_frame_id" value="$(arg robot_name)_tf/odom" />
+  </node>
   <node name="odom_pub" pkg="warehousetest" type="robot_odom_pub.py" />
     
 </launch>

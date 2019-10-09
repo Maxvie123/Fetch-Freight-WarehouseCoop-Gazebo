@@ -11,7 +11,7 @@
     <include file="$(find warehousetest)/launch/include/freight_onerobot.launch" >
       <arg name="x" value ="10" />
       <arg name="y" value ="10" />
-      <arg name="robot_name" value="Freight_Robot1" />
+      <arg name="robot_name" value="robot1" />
     </include>
   </group>
   <!-- BEGIN FREIGHT_ROBOT 2 -->
@@ -20,7 +20,7 @@
     <include file="$(find warehousetest)/launch/include/freight_onerobot.launch" >
       <arg name="x" value ="-10" />
       <arg name="y" value ="-10" />
-      <arg name="robot_name" value="Freight_Robot2" />
+      <arg name="robot_name" value="robot2" />
     </include>
   </group>
   <!-- BEGIN FETCH_ROBOT 1 -->

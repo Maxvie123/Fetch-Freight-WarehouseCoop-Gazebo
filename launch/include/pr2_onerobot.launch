@@ -1,0 +1,43 @@
+<launch>
+
+  <arg name="robot_name" default="Freight_robot"/>
+  <arg name="x" default="0.0" />
+  <arg name="y" default="0.0" />
+  <arg name="z" default="0.0" />
+  <arg name="yaw" default="0.0" />
+
+  <!-- urdf file for fetch robot -->
+  <!-- <param name="robot_description" command="$(find xacro)/xacro.py $(find fetch_gazebo)/robots/fetch.gazebo.xacro" /> -->
+  <param name="robot_description" command="$(find xacro)/xacro $(find pr2_description)/robots/pr2.urdf.xacro" />
+  
+  <!-- Add joint state publisher  -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+    <param name="use_gui" value="false"/>
+  </node>
+
+
+  <!-- URDF and TF support -->
+  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
+    <param name="publish_frequency" value="100.0"/>
+  </node> -->
+
+  <!-- Put a robot in gazebo, make it look pretty -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -model $(arg robot_name) -param robot_description"/>
+
+
+  <include file="$(find pr2_controller_manager)/controller_manager.launch" />
+
+  <rosparam file="$(find pr2_controller_configuration_gazebo)/config/pr2_base_controller.yaml" command="load" />
+
+  <!-- Fake Calibration -->
+  <node pkg="rostopic" type="rostopic" name="fake_joint_calibration"
+        args="pub /calibrated std_msgs/Bool true" />
+
+
+  <node name="default_controllers_spawner"
+        pkg="pr2_controller_manager" type="spawner" output="screen"
+        args="--wait-for=/calibrated base_controller" />
+
+
+</launch>
