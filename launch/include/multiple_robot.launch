@@ -3,7 +3,12 @@
   <!-- No namespace here as we will share this description. 
        Access with slash at the beginning -->    
 
-  <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/freight.gazebo.xacro" />
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find warehousetest)/maps/warehouse.yaml">
+    <param name="frame_id" value="/map" />
+  </node>
+  <!-- <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/freight.gazebo.xacro" /> -->
 
   <!-- BEGIN FREIGHT_ROBOT 1 -->
   <group ns="robot1">
