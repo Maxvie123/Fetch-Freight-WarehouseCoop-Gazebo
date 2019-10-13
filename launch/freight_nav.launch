@@ -20,14 +20,14 @@
     </include>
   </group>
   <!-- Launch navigation stack for robot2 -->
-<!--   <group ns="robot2">
+  <group ns="robot2">
     <param name="amcl/initial_pose_x" value="-10" />
     <param name="amcl/initial_pose_y" value="-10" />
     <include file="$(find warehousetest)/config/navigation/move_base.launch.xml" >
     	<arg name="robot_name" value="robot2" />
       <arg name="robot_type" value="freight"/>
     </include>    	
-  </group> -->
+  </group>
 
 
 

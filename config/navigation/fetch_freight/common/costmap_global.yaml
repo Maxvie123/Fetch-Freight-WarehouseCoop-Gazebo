@@ -1,5 +1,6 @@
 global_frame: map
 
+always_send_full_costmap: true
 update_frequency: 5.0
 publish_frequency: 0.0
 static_map: true
