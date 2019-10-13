@@ -33,7 +33,7 @@ model = GetModelStateRequest()
 model.model_name=robot_name
 model.relative_entity_name='ground_plane'
 
-r = rospy.Rate(10)
+r = rospy.Rate(100)
 
 tf_parent = robot_name +'_tf/odom'
 tf_child = robot_name +'_tf/base_link'
