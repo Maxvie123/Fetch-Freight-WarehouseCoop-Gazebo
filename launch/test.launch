@@ -1,7 +1,0 @@
-<launch>
-
-
-<!-- Start navigation -->
-  <include file="$(find warehousetest)/launch/fetch_nav_test.launch" />
-
-</launch>

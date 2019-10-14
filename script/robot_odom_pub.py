@@ -11,6 +11,9 @@ rospy.init_node('odom_pub')
 
 #get the robot model name from the parent 
 robot_name=rospy.get_param('robot_name')
+robot_type=rospy.get_param('type')
+
+#base on robot_type choose base_link or base_footprint
 
 #publish the odom infomation in parent namespace
 odom_pub=rospy.Publisher ('odom', Odometry,queue_size=50)

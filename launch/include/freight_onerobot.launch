@@ -1,6 +1,7 @@
 <launch>
 
   <arg name="robot_name"/>
+  <arg name="type" />
   <arg name="x" default="0.0" />
   <arg name="y" default="0.0" />
   <arg name="z" default="0.0" />
