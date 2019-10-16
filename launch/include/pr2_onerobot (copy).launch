@@ -13,8 +13,6 @@
   <param name="robot_name" type="str" value="$(arg robot_name)" />
   <param name="type" type="str" value="$(arg type)" />
 
-  <node name="jiont_state_publisher" pkg="jiont_state_publisher" type="jiont_state_publisher" />
-
   <!-- Put a robot in gazebo, make it look pretty -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
         args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -model $(arg robot_name) -param robot_description"/>
@@ -28,12 +26,13 @@
   <node pkg="rostopic" type="rostopic" name="fake_joint_calibration"
         args="pub /calibrated std_msgs/Bool true" />
   <!-- Load and Start Default Controllers -->
-  <include file="$(find warehousetest)/launch/include/pr2_default_controllers.launch" />
-  <node name="odom_pub" pkg="warehousetest" type="robot_odom_pub.py" />
+  <include file="$(find pr2_controller_configuration_gazebo)/launch/pr2_default_controllers.launch" />
 
-  <node pkg="topic_tools" type="mux" name="cmd_vel_mux" respawn="true" args="base_controller/command cmd_vel teleop/cmd_vel">
-    <remap from="mux" to="cmd_vel_mux" />
-  </node>
+  <node name="default_controllers_spawner"
+        pkg="pr2_controller_manager" type="spawner" output="screen"
+        args="--wait-for=/calibrated base_controller" />
+  <node name="odom_pub" pkg="warehousetest" type="robot_odom_pub.py" />
+  
 
 
 </launch>

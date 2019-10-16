@@ -12,9 +12,9 @@
 
   <!-- Launch navigation stack for robot1 -->
   <group ns="robot1">
-    <param name="amcl/initial_pose_x" value="10" />
-    <param name="amcl/initial_pose_y" value="10" />
-    <include file="$(find warehousetest)/config/navigation/move_base.launch.xml" >
+    <param name="amcl/initial_pose_x" value="0" />
+    <param name="amcl/initial_pose_y" value="1" />
+    <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
     	<arg name="robot_name" value="robot1" />
       <arg name="robot_type" value="freight"/>
     </include>
@@ -23,11 +23,20 @@
   <group ns="robot2">
     <param name="amcl/initial_pose_x" value="-10" />
     <param name="amcl/initial_pose_y" value="-10" />
-    <include file="$(find warehousetest)/config/navigation/move_base.launch.xml" >
+    <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
     	<arg name="robot_name" value="robot2" />
       <arg name="robot_type" value="freight"/>
     </include>    	
   </group>
+  <!-- Launch navigation stack for robot3 -->
+<!--   <group ns="robot3">
+    <param name="amcl/initial_pose_x" value="-10" />
+    <param name="amcl/initial_pose_y" value="10" />
+    <include file="$(find warehousetest)/config/navigation/pr2/move_base.launch.xml" >
+      <arg name="robot_name" value="robot3" />
+      <arg name="robot_type" value="pr2"/>
+    </include>      
+  </group> -->
 
 
 

@@ -11,8 +11,9 @@ class MoveBaseClient(object):
     def __init__(self, robot_name):
     	robot_namespace = robot_name+"/move_base"
         self.client = actionlib.SimpleActionClient(robot_namespace, MoveBaseAction)
-        rospy.loginfo("Waiting for move_base...")
+        rospy.loginfo(robot_name+" is waiting for move_base...")
         self.client.wait_for_server()
+        rospy.loginfo(robot_name+" successfully connected to the server")
 
     def goto(self, x, y, theta, frame="map"):
         move_goal = MoveBaseGoal()
@@ -40,5 +41,7 @@ if __name__ == "__main__":
     move_base = MoveBaseClient("robot2")
 
 
-    rospy.loginfo("Moving to the origin")
-    move_base.goto(0, 0, 0)
+    rospy.sleep(10)
+    rospy.loginfo("Moving to rack #5")
+    move_base.goto(-4, -3, 0)
+

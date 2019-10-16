@@ -18,6 +18,7 @@
   <!-- urdf file for freight robot -->
   <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/freight.gazebo.xacro" />
   <param name="robot_name" type="str" value="$(arg robot_name)" />
+  <param name="type" type="str" value="$(arg type)" />
 
   <!-- URDF and TF support -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >

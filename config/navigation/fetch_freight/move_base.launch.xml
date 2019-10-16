@@ -6,7 +6,7 @@
 
 
 	<!-- Run AMCL -->
-	<include file = "$(find warehousetest)/config/navigation/amcl.launch.xml">
+	<include file = "$(find warehousetest)/config/navigation/fetch_freight/amcl.launch.xml">
 		<arg name="robot_name" value="$(arg robot_name)"/>
 	</include>	
 

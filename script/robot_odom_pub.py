@@ -14,6 +14,10 @@ robot_name=rospy.get_param('robot_name')
 robot_type=rospy.get_param('type')
 
 #base on robot_type choose base_link or base_footprint
+if robot_type == 'pr2':
+	base = '_tf/base_footprint'
+else:
+	base = '_tf/base_link'
 
 #publish the odom infomation in parent namespace
 odom_pub=rospy.Publisher ('odom', Odometry,queue_size=50)
@@ -39,7 +43,7 @@ model.relative_entity_name='ground_plane'
 r = rospy.Rate(25)
 
 tf_parent = robot_name +'_tf/odom'
-tf_child = robot_name +'_tf/base_link'
+tf_child = robot_name + base
 
 while not rospy.is_shutdown():
 	current_time = rospy.Time.now()

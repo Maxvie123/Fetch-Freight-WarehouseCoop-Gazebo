@@ -30,10 +30,10 @@ TrajectoryPlannerROS:
   xy_goal_tolerance: 0.1
   latch_xy_goal_tolerance: true
   # forward simulation
-  sim_time: 1.0
+  sim_time: 1.5
   sim_granularity: 0.025
   angular_sim_granularity: 0.025
-  vx_samples: 3
+  vx_samples: 10
   vtheta_samples: 10
   # scoring (defaults)
   meter_scoring: true
