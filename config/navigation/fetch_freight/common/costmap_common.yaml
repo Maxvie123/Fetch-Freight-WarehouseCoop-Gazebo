@@ -5,6 +5,6 @@ transform_tolerance: 1
 robot_radius: 0.30
 inflater:
   robot_radius: 0.30
-  inflation_radius: 0.70
+  inflation_radius: 0.60
 
 # Obstacles are defined in robot folders
