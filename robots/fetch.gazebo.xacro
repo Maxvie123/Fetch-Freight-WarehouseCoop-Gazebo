@@ -98,6 +98,7 @@
     <minDepth>0.001</minDepth>
     <material>Gazebo/Grey</material>
   </gazebo>
+
   <gazebo reference="l_gripper_finger_link">
     <kp>1000000.0</kp>
     <kd>100.0</kd>
@@ -107,4 +108,190 @@
     <minDepth>0.001</minDepth>
     <material>Gazebo/Grey</material>
   </gazebo>
+
+
+  <!-- adding transmissions for the wheel joints and other joints to apply default ros_control plugin -->
+  <transmission name="l_wheel_trans">
+  	<type>transmission_interface/SimpleTransmission</type>
+  	<joint name="l_wheel_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+  	</joint>
+  	<actuator name="l_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+  	</actuator>
+  </transmission>
+
+  <transmission name="r_wheel_trans">
+  	<type>transmission_interface/SimpleTransmission</type>
+  	<joint name="r_wheel_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+  	</joint>
+  	<actuator name="r_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+  	</actuator>
+  </transmission>
+
+  <transmission name="torso_lift_trans">
+  	<type>transmission_interface/SimpleTransmission</type>
+  	<joint name="torso_lift_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  	</joint>
+  	<actuator name="torso_lift_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+  	</actuator>
+  </transmission>
+
+  <transmission name="head_pan_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="head_pan_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="head_pan_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="head_tilt_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="head_tilt_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="head_tilt_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="shoulder_pan_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulder_pan_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="shoulder_pan_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="shoulder_lift_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulder_lift_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="shoulder_lift_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="upperarm_roll_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="upperarm_roll_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="upperarm_roll_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="elbow_flex_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="elbow_flex_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="elbow_flex_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="forearm_roll_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="forearm_roll_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="forearm_roll_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="wrist_flex_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wrist_flex_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wrist_flex_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="wrist_roll_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wrist_roll_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wrist_roll_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <!-- SICK TIM561 (25m Range) -->
+  <gazebo reference="laser_link">
+    <sensor type="ray" name="base_laser">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>15</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>662</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.91986</min_angle>
+            <max_angle>1.91986</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.05</min>
+          <max>25.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <!-- Noise parameters based on spec for SICK TIM561 (10m version) -->
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.02</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_base_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/base_scan</topicName>
+        <frameName>laser_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- Color the bellows -->
+  <gazebo reference="bellows_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="bellows_link2">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- Color the estop -->
+  <gazebo reference="estop_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <!-- Load the plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    </plugin>
+  </gazebo>
+
 </robot>

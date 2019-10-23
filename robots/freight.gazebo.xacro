@@ -46,7 +46,7 @@
   <transmission name="l_wheel_trans">
   	<type>transmission_interface/SimpleTransmission</type>
   	<joint name="l_wheel_joint">
-      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
   	</joint>
   	<actuator name="l_wheel_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -56,7 +56,7 @@
   <transmission name="r_wheel_trans">
   	<type>transmission_interface/SimpleTransmission</type>
   	<joint name="r_wheel_joint">
-      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
   	</joint>
   	<actuator name="r_wheel_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -67,7 +67,7 @@
   <gazebo reference="laser_link">
     <sensor type="ray" name="base_laser">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <update_rate>15</update_rate>
       <ray>
         <scan>
@@ -95,6 +95,11 @@
         <frameName>laser_link</frameName>
       </plugin>
     </sensor>
+  </gazebo>
+
+  <!-- Color the estop -->
+  <gazebo reference="estop_link">
+    <material>Gazebo/Red</material>
   </gazebo>
 
   <!-- Gazebo plugin for ROS Control -->

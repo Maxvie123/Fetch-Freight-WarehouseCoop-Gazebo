@@ -1,6 +1,7 @@
 <launch>
 
-  <arg name="robot_name" default="Freight_robot"/>
+  <arg name="robot_name"/>
+  <arg name="type" />
   <arg name="x" default="0.0" />
   <arg name="y" default="0.0" />
   <arg name="z" default="0.0" />
@@ -9,20 +10,26 @@
   <!-- urdf file for fetch robot -->
   <!-- <param name="robot_description" command="$(find xacro)/xacro.py $(find fetch_gazebo)/robots/fetch.gazebo.xacro" /> -->
   <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/fetch.gazebo.xacro" />
+  <param name="robot_name" type="str" value="$(arg robot_name)" />
+  <param name="type" type="str" value="$(arg type)" />
+
+  <!-- Load controller configurations from YAML file to parameter server -->
+  <rosparam command="load"
+            file="$(find warehousetest)/config/fetch_controllers.yaml"/>  
   
-  <!-- Add joint state publisher  -->
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
-    <param name="use_gui" value="false"/>
-  </node>
-
-
   <!-- URDF and TF support -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
-    <param name="publish_frequency" value="100.0"/>
+    <param name="publish_frequency" value="50.0"/>
   </node>
 
   <!-- Put a robot in gazebo, make it look pretty -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-        args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -model $(arg robot_name) -file $(find warehousetest)/robots/fetch.urdf"/>
+        args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -model $(arg robot_name) -param robot_description"/> 
+
+  <!-- load the controllers -->        
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" 
+        args="base_controller torso_lift_controller head_pan_controller head_tilt_controller shoulder_pan_controller shoulder_lift_controller upperarm_roll_controller elbow_flex_controller forearm_roll_controller wrist_flex_controller wrist_roll_controller joint_state_controller"/>
+
+
 
 </launch>

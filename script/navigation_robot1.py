@@ -42,7 +42,7 @@ if __name__ == "__main__":
     move_base = MoveBaseClient("robot1")
 
 
-    rospy.sleep(10)
+    rospy.sleep(5)
     rospy.loginfo("Moving to rack #5")
     move_base.goto(-4, -1, 0)
 

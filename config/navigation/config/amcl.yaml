@@ -3,6 +3,9 @@ min_particles: 500
 max_particles: 2000
 kld_err: 0.01
 kld_z: 0.99
+initial_cov_xx: 0.01
+initial_cov_yy: 0.01
+initial_cov_aa: 0.01
 # minimum distance between particle updates
 update_min_d: 0.1
 update_min_a: 0.25
@@ -28,10 +31,10 @@ laser_sigma_hit: 0.2
 
 # Odometry model
 odom_model_type: "diff-corrected"
-odom_alpha1: 0.1  # rotation noise per rotation
-odom_alpha2: 0.1  # rotation noise per translation
-odom_alpha3: 0.1  # translation noise per translation
-odom_alpha4: 0.1  # translation noise per rotation
+odom_alpha1: 0.05  # rotation noise per rotation
+odom_alpha2: 0.05 # rotation noise per translation
+odom_alpha3: 0.05 # translation noise per translation
+odom_alpha4: 0.05 # translation noise per rotation
 odom_frame_id: "odom"
 base_frame_id: "base_link"
 global_frame_id: "map"
