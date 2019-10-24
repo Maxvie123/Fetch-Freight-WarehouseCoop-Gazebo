@@ -27,8 +27,9 @@ base_controller:
       max_acceleration       : 1.5  # rad/s^2
 
 torso_lift_controller:
-  type: JointPositionController
+  type: effort_controllers/JointPositionController
   joint: torso_lift_joint
+  pid: {p: 2.0, i: 0.0, d: 0.0}
 
 head_pan_controller:
   type: effort_controllers/JointPositionController

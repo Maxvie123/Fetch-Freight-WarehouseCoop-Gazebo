@@ -137,6 +137,7 @@
       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
   	</joint>
   	<actuator name="torso_lift_motor">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
   	</actuator>
   </transmission>
