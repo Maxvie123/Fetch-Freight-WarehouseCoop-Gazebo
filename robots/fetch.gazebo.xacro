@@ -108,7 +108,32 @@
     <minDepth>0.001</minDepth>
     <material>Gazebo/Grey</material>
   </gazebo>
-
+  
+  <!-- turn off the gravity for arm links -->
+  <gazebo reference="shoulder_pan_link">
+    <gravity>0</gravity>
+  </gazebo>
+  <gazebo reference="shoulder_lift_link">
+    <gravity>0</gravity>
+  </gazebo>
+  <gazebo reference="upperarm_roll_link">
+    <gravity>0</gravity>
+  </gazebo>
+  <gazebo reference="elbow_flex_link">
+    <gravity>0</gravity>
+  </gazebo>
+  <gazebo reference="forearm_roll_link">
+    <gravity>0</gravity>
+  </gazebo>
+  <gazebo reference="wrist_flex_link">
+    <gravity>0</gravity>
+  </gazebo>
+  <gazebo reference="wrist_roll_link">
+    <gravity>0</gravity>
+  </gazebo>
+  <gazebo reference="gripper_link">
+    <gravity>0</gravity>
+  </gazebo>
 
   <!-- adding transmissions for the wheel joints and other joints to apply default ros_control plugin -->
   <transmission name="l_wheel_trans">
@@ -134,10 +159,10 @@
   <transmission name="torso_lift_trans">
   	<type>transmission_interface/SimpleTransmission</type>
   	<joint name="torso_lift_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   	</joint>
   	<actuator name="torso_lift_motor">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
   	</actuator>
   </transmission>
@@ -241,6 +266,39 @@
     </actuator>
   </transmission>
 
+  <transmission name="r_gripper_finger_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="r_gripper_finger_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="r_gripper_finger_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="l_gripper_finger_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="l_gripper_finger_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="l_gripper_finger_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="bellows_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="bellows_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="bellows_motor">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
 
   <!-- SICK TIM561 (25m Range) -->
   <gazebo reference="laser_link">
@@ -270,7 +328,7 @@
         </noise>
       </ray>
       <plugin name="gazebo_ros_base_hokuyo_controller" filename="libgazebo_ros_laser.so">
-        <topicName>/base_scan</topicName>
+        <topicName>base_scan</topicName>
         <frameName>laser_link</frameName>
       </plugin>
     </sensor>

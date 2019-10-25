@@ -1,0 +1,6 @@
+<launch>
+	<!-- <node name="demo_r1" pkg="warehousetest" type="navigation_robot1.py" /> -->
+	<!-- <node name="demo_r2" pkg="warehousetest" type="navigation_robot2.py" /> -->
+	<node name="demo_r3" pkg="warehousetest" type="navigation_robot3.py" />
+	<node name="demo_r4" pkg="warehousetest" type="navigation_robot4.py" />
+</launch>

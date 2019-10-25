@@ -34,7 +34,7 @@ get_model_srv = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
 odom=Odometry()
 header = Header()
 header.frame_id=robot_name +'/odom'
-odom.child_frame_id = robot_name +'_tf/base_link'
+odom.child_frame_id = robot_name + base
 
 model = GetModelStateRequest()
 model.model_name=robot_name

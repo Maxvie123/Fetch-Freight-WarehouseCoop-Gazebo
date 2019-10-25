@@ -26,47 +26,68 @@ base_controller:
       has_acceleration_limits: true
       max_acceleration       : 1.5  # rad/s^2
 
+
+torso_lift_controller:
+  type: effort_controllers/JointPositionController
+  joint: torso_lift_joint
+  pid: {p: 1000.0, i: 0.0, d: 0.0}
+
 head_pan_controller:
   type: effort_controllers/JointPositionController
   joint: head_pan_joint
-  pid: {p: 2.0, i: 0.0, d: 0.0}
+  pid: {p: 10.0, i: 0.4, d: 0.2}
 
 head_tilt_controller:
   type: effort_controllers/JointPositionController
   joint: head_tilt_joint
-  pid: {p: 10.0, i: 0.0, d: 0.0}
+  pid: {p: 10.0, i: 0.4, d: 0.2}
 
 shoulder_pan_controller:
   type: effort_controllers/JointPositionController
   joint: shoulder_pan_joint
-  pid: {p: 100.0, i: 0.1, d: 0.0}
+  pid: {p: 100.0, i: 0.2, d: 0.1}
 
 shoulder_lift_controller:
   type: effort_controllers/JointPositionController
   joint: shoulder_lift_joint
-  pid: {p: 100.0, i: 0.1, d: 0.0}
+  pid: {p: 150.0, i: 0.5, d: 1}
 
 upperarm_roll_controller:
   type: effort_controllers/JointPositionController
   joint: upperarm_roll_joint
-  pid: {p: 100.0, i: 0.1, d: 0.0}
+  pid: {p: 100.0, i: 0.2, d: 0.1}
 
 elbow_flex_controller:
   type: effort_controllers/JointPositionController
   joint: elbow_flex_joint
-  pid: {p: 100.0, i: 0.1, d: 0.0}
+  pid: {p: 100.0, i: 0.2, d: 0.1}
 
 forearm_roll_controller:
   type: effort_controllers/JointPositionController
   joint: forearm_roll_joint
-  pid: {p: 100.0, i: 0.1, d: 0.0}
+  pid: {p: 100.0, i: 0.2, d: 0.1}
 
 wrist_flex_controller:
   type: effort_controllers/JointPositionController
   joint: wrist_flex_joint
-  pid: {p: 100.0, i: 0.1, d: 0.0}
+  pid: {p: 100.0, i: 0.2, d: 0.1}
 
 wrist_roll_controller:
   type: effort_controllers/JointPositionController
   joint: wrist_roll_joint
-  pid: {p: 100.0, i: 0.1, d: 0.0}
+  pid: {p: 100.0, i: 0.2, d: 0.1}
+
+r_gripper_finger_controller:
+  type: effort_controllers/JointPositionController
+  joint: r_gripper_finger_joint
+  pid: {p: 5000.0, i: 0.0, d: 0.0}
+
+l_gripper_finger_controller:
+  type: effort_controllers/JointPositionController
+  joint: l_gripper_finger_joint
+  pid: {p: 5000.0, i: 0.0, d: 0.0}
+
+bellows_controller:
+  type: effort_controllers/JointPositionController
+  joint: bellows_joint
+  pid: {p: 25.0, i: 0.0, d: 0.0}

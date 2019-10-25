@@ -1,0 +1,7 @@
+width: 6.0
+height: 6.0
+resolution: 0.05
+
+plugins:
+ - {name: obstacles,  type: "costmap_2d::VoxelLayer"}
+ - {name: inflater,   type: "costmap_2d::InflationLayer"}

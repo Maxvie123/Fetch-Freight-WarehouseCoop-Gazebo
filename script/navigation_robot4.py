@@ -33,17 +33,18 @@ class MoveBaseClient(object):
 
 if __name__ == "__main__":
     # Create a node
-    rospy.init_node("navigation_demo")
+    robot_name = "robot4"
+    rospy.init_node(robot_name+"_navigation_demo")
 
     # Make sure sim time is working
     while not rospy.Time.now():
         pass
 
     # Setup clients
-    move_base = MoveBaseClient("robot2")
+    move_base = MoveBaseClient(robot_name)
 
 
     rospy.sleep(5)
     rospy.loginfo("Moving to rack #5")
-    move_base.goto(-4, -3, 0)
+    move_base.goto(-4, -7, 0)
 
