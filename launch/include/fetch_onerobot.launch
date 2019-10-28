@@ -26,7 +26,7 @@
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
         args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -model $(arg robot_name) -param robot_description"/> 
 
-  <!-- load the controllers -->        
+  <!-- spawn controllers -->        
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" 
         args="base_controller torso_lift_controller head_pan_controller head_tilt_controller shoulder_pan_controller shoulder_lift_controller upperarm_roll_controller elbow_flex_controller forearm_roll_controller wrist_flex_controller wrist_roll_controller joint_state_controller r_gripper_finger_controller l_gripper_finger_controller bellows_controller"/>
 

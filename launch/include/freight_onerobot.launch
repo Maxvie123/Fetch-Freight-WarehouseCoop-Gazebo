@@ -8,12 +8,8 @@
   <arg name="yaw" default="0.0" />
 
   <!-- Setup controllers -->
-  <!-- <rosparam file="$(find fetch_gazebo)/config/freight_controllers.yaml" command="load" /> -->
-
-   <!-- Add joint state publisher  -->
-<!--   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
-    <param name="use_gui" value="false"/>
-  </node> -->
+  <rosparam command="load"
+            file="$(find warehousetest)/config/freight_controllers.yaml" />  
 
   <!-- urdf file for freight robot -->
   <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/freight.gazebo.xacro" />
@@ -24,20 +20,20 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
     <param name="publish_frequency" value="100.0"/>
   </node>
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
-  </node>
+
   <!-- Put a robot in gazebo, make it look pretty -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
         args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -model $(arg robot_name) -param robot_description"/> 
 
-  <rosparam command="load"
-            file="$(find warehousetest)/config/freight_controllers.yaml"
-            ns="freight_base_controller" />  
-  <node name="freight_base_controller" pkg="controller_manager" type="spawner" args="freight_base_controller">
+  <!-- spawn controllers --> 
+  <node name="freight_base_controller" pkg="controller_manager" type="spawner" args="base_controller joint_state_controller">
   </node>
+
+  <!-- publish odometry message and tf -->
   <node name="odom_pub" pkg="warehousetest" type="robot_odom_pub.py" />
 
-  <node pkg="topic_tools" type="mux" name="cmd_vel_mux" respawn="true" args="freight_base_controller/cmd_vel cmd_vel teleop/cmd_vel">
+  <!-- add a cmd_vel muxer that takes multiple input sources -->
+  <node pkg="topic_tools" type="mux" name="cmd_vel_mux" respawn="true" args="base_controller/cmd_vel cmd_vel teleop/cmd_vel">
     <remap from="mux" to="cmd_vel_mux" />
   </node>
     

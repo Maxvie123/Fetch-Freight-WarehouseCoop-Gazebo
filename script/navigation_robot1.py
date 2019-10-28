@@ -46,5 +46,5 @@ if __name__ == "__main__":
 
     rospy.sleep(5)
     rospy.loginfo("Moving to rack #5")
-    move_base.goto(-4, -1, 0)
+    move_base.goto(-4, 3, 0)
 
