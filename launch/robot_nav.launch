@@ -12,39 +12,40 @@
 
   <!-- Launch navigation stack for robot1 -->
   <group ns="robot1">
-    <param name="amcl/initial_pose_x" value="5" />
-    <param name="amcl/initial_pose_y" value="1" />
+    <param name="amcl/initial_pose_x" value="0" />
+    <param name="amcl/initial_pose_y" value="-1" />
     <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
     	<arg name="robot_name" value="robot1" />
       <arg name="robot_type" value="freight"/>
     </include>
   </group>
   <!-- Launch navigation stack for robot2 -->
-<!--   <group ns="robot2">
-    <param name="amcl/initial_pose_x" value="-10" />
-    <param name="amcl/initial_pose_y" value="-5" />
+  <group ns="robot2">
+    <param name="amcl/initial_pose_x" value="4" />
+    <param name="amcl/initial_pose_y" value="-1" />
     <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
     	<arg name="robot_name" value="robot2" />
       <arg name="robot_type" value="freight"/>
     </include>    	
-  </group> -->
+  </group>
   <!-- Launch navigation stack for robot3 -->
-  <!-- <group ns="robot3">
-    <param name="amcl/initial_pose_x" value="-9" />
-    <param name="amcl/initial_pose_y" value="7" />
+  <group ns="robot3">
+    <param name="amcl/initial_pose_x" value="0" />
+    <param name="amcl/initial_pose_y" value="-3" />
     <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
       <arg name="robot_name" value="robot3" />
       <arg name="robot_type" value="fetch"/>
     </include>      
   </group>
+  <!-- Launch navigation stack for robot4 -->
   <group ns="robot4">
-    <param name="amcl/initial_pose_x" value="-9" />
-    <param name="amcl/initial_pose_y" value="1" />
+    <param name="amcl/initial_pose_x" value="4" />
+    <param name="amcl/initial_pose_y" value="-3" />
     <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
       <arg name="robot_name" value="robot4" />
       <arg name="robot_type" value="fetch"/>
     </include>      
-  </group> -->
+  </group>
 
 
 
