@@ -1,14 +1,14 @@
 # Base profile
 TrajectoryPlannerROS:
-  acc_lim_x: 0.5
+  acc_lim_x: 1
   acc_lim_y: 0.0
-  acc_lim_theta: 1.0
-  max_vel_x: 2.0
-  min_vel_x: 0.4
+  acc_lim_theta: 2
+  max_vel_x: 0.6
+  min_vel_x: -0.75
   max_vel_y: 0.0
   min_vel_y: 0.0
-  max_vel_theta: 1.5
-  min_vel_theta: -1.5
+  max_vel_theta: 0.75
+  min_vel_theta: -0.75
   min_in_place_vel_theta: 0.3
   holonomic_robot: false
 

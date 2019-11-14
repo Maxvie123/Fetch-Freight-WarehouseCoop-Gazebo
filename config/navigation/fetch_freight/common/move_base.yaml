@@ -21,7 +21,7 @@ NavfnROS:
   visualize_potential: false
 
 # Local planner
-controller_frequency: 10.0
+controller_frequency: 15.0
 controller_patience: 15.0
 TrajectoryPlannerROS:
   # base vel/accel profile is in robot folders
@@ -30,16 +30,16 @@ TrajectoryPlannerROS:
   xy_goal_tolerance: 0.1
   latch_xy_goal_tolerance: true
   # forward simulation
-  sim_time: 1.5
+  sim_time: 1.0
   sim_granularity: 0.025
   angular_sim_granularity: 0.025
-  vx_samples: 10
-  vtheta_samples: 10
+  vx_samples: 5
+  vtheta_samples: 30
   # scoring (defaults)
   meter_scoring: true
-  pdist_scale: 10.0
-  gdist_scale: 15.0
-  occdist_scale: 0.1
+  pdist_scale: 0.6
+  gdist_scale: 1
+  occdist_scale: 0.01
   heading_lookahead: 0.5
   heading_scoring_timestep: 0.8
   heading_scoring: true
