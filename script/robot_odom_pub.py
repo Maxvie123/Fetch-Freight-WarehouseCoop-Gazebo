@@ -6,6 +6,12 @@ from nav_msgs.msg import Odometry
 from std_msgs.msg import Header
 from gazebo_msgs.srv import GetModelState, GetModelStateRequest
 
+
+def callback(data,odom):
+	# callback function for get Twist messages from
+	# base controller
+	odom.twist.twist = data.twist.twist
+
 #initial the node
 rospy.init_node('odom_pub')
 
@@ -45,6 +51,9 @@ r = rospy.Rate(25)
 tf_parent = robot_name +'_tf/odom'
 tf_child = robot_name + base
 
+# subscribe the base_controller
+# rospy.Subscriber("base_controller/odom",Odometry,callback,odom)
+
 while not rospy.is_shutdown():
 	current_time = rospy.Time.now()
 
@@ -69,7 +78,6 @@ while not rospy.is_shutdown():
    #publish odometry message over ROS
 	odom.pose.pose = result.pose
 	odom.twist.twist = result.twist
-
 	header.stamp = rospy.Time.now()
 	odom.header = header
 
