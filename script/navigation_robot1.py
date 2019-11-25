@@ -51,21 +51,6 @@ class MoveBaseClient(object):
             if sqrt((x-nowx)**2+(y-nowy)**2) < flag:
                 state = 1
 
-def goto_temp_state(model,args,flag):
-
-    state = 0
-    goal.x = args[0]
-    goal.y = args[1]
-    while not state:
-        result = get_model_srv(model)
-        # Get x and y coordinate values
-        x = result.pose.position.x
-        y = result.pose.position.y
-        if sqrt((x-goal.x)**2+(y-goal.y)**2) < flag:
-            state = 1
-
-
-
 
 
 if __name__ == "__main__":
@@ -91,9 +76,9 @@ if __name__ == "__main__":
     flag = 0.8
 
     rospy.sleep(5)
-    rospy.loginfo("Moving to rack #5")
-    move_base.goto_temp(0, 1, 90,model,flag)
-    move_base.goto_temp(-4, 1, 180,model,flag)
-    move_base.goto(-4, -4, -90)
+    rospy.loginfo("Moving to rack #3")
+    # move_base.goto_temp(0, 1, 90,model,flag)
+    # move_base.goto_temp(-4, 1, 180,model,flag)
+    move_base.goto(6, 1, 0)
 
 
