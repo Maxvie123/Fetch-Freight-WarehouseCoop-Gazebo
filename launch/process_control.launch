@@ -1,0 +1,3 @@
+<launch>
+	<node name="process_r1" pkg="warehousetest" type="process_control.py" output="screen"/> 
+</launch>

@@ -7,46 +7,46 @@
   <!-- <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/freight.gazebo.xacro" /> -->
 
   <!-- BEGIN FREIGHT_ROBOT 1 -->
-<!--   <group ns="robot1">
-    <param name="tf_prefix" value="robot1_tf" />
+  <group ns="freight1">
+    <param name="tf_prefix" value="freight1_tf" />
     <include file="$(find warehousetest)/launch/include/freight_onerobot.launch" >
       <arg name="x" value ="0" />
       <arg name="y" value ="-1" />
       <arg name="yaw" value ="0.08" />
-      <arg name="robot_name" value="robot1" />
+      <arg name="robot_name" value="freight1" />
       <arg name="type" value="freight"/>
     </include>
-  </group> -->
+  </group>
   <!-- BEGIN FREIGHT_ROBOT 2 -->
-<!--   <group ns="robot2">
-    <param name="tf_prefix" value="robot2_tf" />
+  <group ns="freight2">
+    <param name="tf_prefix" value="freight2_tf" />
     <include file="$(find warehousetest)/launch/include/freight_onerobot.launch" >
       <arg name="x" value ="4" />
       <arg name="y" value ="-1" />
       <arg name="yaw" value ="0.08" />
-      <arg name="robot_name" value="robot2" />
+      <arg name="robot_name" value="freight2" />
       <arg name="type" value="freight"/>
     </include>
-  </group> -->
-  <!-- BEGIN FETCH_ROBOT 3 -->
-  <group ns="robot3">
-    <param name="tf_prefix" value="robot3_tf" />
+  </group>
+  <!-- BEGIN FETCH_ROBOT 1 -->
+  <group ns="fetch1">
+    <param name="tf_prefix" value="fetch1_tf" />
     <include file="$(find warehousetest)/launch/include/fetch_onerobot.launch" >
       <arg name="x" value ="0" />
       <arg name="y" value ="-3" />
-      <arg name="robot_name" value="robot3" />
+      <arg name="robot_name" value="fetch1" />
       <arg name="type" value="fetch"/>
     </include>
   </group>
-  <!-- BEGIN FETCH_ROBOT 4 -->
-<!--   <group ns="robot4">
-    <param name="tf_prefix" value="robot4_tf" />
+  <!-- BEGIN FETCH_ROBOT 2 -->
+  <group ns="fetch2">
+    <param name="tf_prefix" value="fetch2_tf" />
     <include file="$(find warehousetest)/launch/include/fetch_onerobot.launch" >
       <arg name="x" value ="4" />
       <arg name="y" value ="-3" />
-      <arg name="robot_name" value="robot4" />
+      <arg name="robot_name" value="fetch2" />
       <arg name="type" value="fetch"/>
     </include>
-  </group> -->
+  </group>
 
 </launch>

@@ -28,7 +28,9 @@
 
   <!-- spawn controllers -->        
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" 
-        args="base_controller torso_lift_controller head_pan_controller head_tilt_controller arm_controller joint_state_controller r_gripper_finger_controller l_gripper_finger_controller bellows_controller"/>
+        args="base_controller torso_lift_controller arm_controller head_controller joint_state_controller r_gripper_finger_controller l_gripper_finger_controller bellows_controller"/>
+  <!-- pose initialization -->
+  <node name="prepare_robot" pkg="warehousetest" type="prepare_robot_fetch.py"/>
 
   <!-- publish odometry message and tf -->
   <node name="odom_pub" pkg="warehousetest" type="robot_odom_pub.py" />
@@ -38,7 +40,27 @@
     <remap from="mux" to="cmd_vel_mux" />
   </node>
 
-  <!-- control fetch arms to initial state -->
-  <!-- <node name="arm_initialization" pkg="warehousetest" type="fetch_arm_initialization.py" /> -->
+
+
+  <!-- Add MoveIt! functions -->
+  <!-- Load the SRDF and other .yaml configuration files on the param server -->
+  <include file="$(find myfetch_moveit_config)/launch/planning_context_local.launch">
+  </include>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+    <rosparam param="source_list">[joint_states]</rosparam>
+  </node>
+
+  <!-- Run the main MoveIt! executable without trajectory execution (we do not have controllers configured by default) -->
+  <include file="$(find myfetch_moveit_config)/launch/move_group.launch">
+  </include>
+
+<!-- Run Rviz and load the default config to see the state of the move_group node -->
+<!--   <include file="$(find myfetch_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="$(find myfetch_moveit_config)/launch/moveit.rviz"/>
+  </include> -->
+
+
 
 </launch>

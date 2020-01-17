@@ -1,0 +1,6 @@
+<launch>
+
+  <include file="$(find warehousetest)/launch/robot_move_arm.launch" > </include>
+  <include file="$(find warehousetest)/launch/robot_nav.launch" > </include>
+
+</launch>

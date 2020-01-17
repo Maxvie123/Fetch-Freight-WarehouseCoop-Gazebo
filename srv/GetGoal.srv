@@ -1,0 +1,3 @@
+int64 goal_index
+---
+float32[] goal_2d

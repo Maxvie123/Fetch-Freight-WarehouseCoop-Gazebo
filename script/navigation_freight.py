@@ -4,9 +4,10 @@ import actionlib
 import rospy
 
 from math import sin, cos, sqrt
-from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import PoseStamped, Pose
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from gazebo_msgs.srv import GetModelState, GetModelStateRequest
+from warehousetest.srv import *
 
 # Move base using navigation stack
 class MoveBaseClient(object):
@@ -17,6 +18,8 @@ class MoveBaseClient(object):
         rospy.loginfo(robot_name+" is waiting for move_base...")
         self.client.wait_for_server()
         rospy.loginfo(robot_name+" successfully connected to the server")
+        service_name = robot_name+'/get_goal'
+        rospy.wait_for_service(service_name)
 
     def goto(self, x, y, theta, frame="map"):
         move_goal = MoveBaseGoal()
@@ -51,14 +54,65 @@ class MoveBaseClient(object):
             if sqrt((x-nowx)**2+(y-nowy)**2) < flag:
                 state = 1
 
+# def get_current_goal(data,goal_2d):
+#     goal_2d[0] = data.position.x
+#     goal_2d[1] = data.position.y
+#     move_base.goto(goal_2d[0], goal_2d[1], 0)
 
+def get_goal_2d_client(counter,robot_name):
+
+    try:
+        get_goal_2d = rospy.ServiceProxy(robot_name+'/get_goal', GetGoal)
+        goal_2d = get_goal_2d(counter)
+        return goal_2d.goal_2d
+    except rospy.ServiceException, e:
+        print "Service call failed: %s"%e
+
+
+def get_state(msg):
+
+    global self_state
+    self_state = msg.data
+    return
+
+def get_counter(msg):
+
+    global counter
+    counter = msg.data
+    return
+
+# def get_picker_state(msg,picker_id):
+
+#     global picker_state
+
+#     return
 
 if __name__ == "__main__":
+
+    picker_list = [1,1]
+    picker_num = 2
+    picker_state = []
     # Create a node
 
-    robot_name = "robot1"
-    rospy.init_node("navigation_demo_for_"+robot_name)
+
+    rospy.init_node("navigation_demo", anonymous=True)
+    node_name = rospy.get_name()
+    node_namespace = rospy.get_namespace()
+
+    if node_namespace == '/':
+        robot_name = rospy.get_param(node_name + '/robot_name')
+    else:
+        robot_name = rospy.get_param(node_namespace + node_name + '/robot_name')
+
+    # print "{}".format(robot_name)
+
+    # create the needed subscribers and service clients 
     get_model_srv = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
+    state_sub = rospy.Subscriber(robot_name + '/state', std_msgs.msg.Float32, get_state)
+    counter_sub = rospy.Subscriber(robot_name + '/counter',td_msgs.msg.Int16, get_counter)
+    # for picker_id in range(picker_num):
+    #     rospy.Subscriber('fetch'+str(picker_id+1)+'/state',std_msgs.msg.Float32, get_picker_state, picker_id)
+
 
     #Get model position in Gazebo
     model = GetModelStateRequest()
@@ -69,16 +123,22 @@ if __name__ == "__main__":
     while not rospy.Time.now():
         pass
 
-    # Setup clients
-    move_base = MoveBaseClient("robot1")
+    # Setup action client
+    move_base = MoveBaseClient(robot_name)
+
+
+    # main loop
+    while counter < len(picker_list):
+        if self_state == 0:
+            goal = get_goal_2d_client(i,robot_name)
+            print "moving to {}".format(goal)
+            move_base.goto(goal[0], goal[1], goal[2])
+        
+
 
     # goto_temp finish flag
-    flag = 0.8
-
-    rospy.sleep(5)
-    rospy.loginfo("Moving to rack #3")
+    # flag = 0.8
     # move_base.goto_temp(0, 1, 90,model,flag)
     # move_base.goto_temp(-4, 1, 180,model,flag)
-    move_base.goto(6, 1, 0)
 
 
