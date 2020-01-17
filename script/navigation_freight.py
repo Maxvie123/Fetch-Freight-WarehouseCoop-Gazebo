@@ -2,6 +2,7 @@
 
 import actionlib
 import rospy
+import std_msgs.msg
 
 from math import sin, cos, sqrt
 from geometry_msgs.msg import PoseStamped, Pose
@@ -81,17 +82,10 @@ def get_counter(msg):
     counter = msg.data
     return
 
-# def get_picker_state(msg,picker_id):
-
-#     global picker_state
-
-#     return
 
 if __name__ == "__main__":
 
     picker_list = [1,1]
-    picker_num = 2
-    picker_state = []
     # Create a node
 
 
@@ -109,7 +103,7 @@ if __name__ == "__main__":
     # create the needed subscribers and service clients 
     get_model_srv = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
     state_sub = rospy.Subscriber(robot_name + '/state', std_msgs.msg.Float32, get_state)
-    counter_sub = rospy.Subscriber(robot_name + '/counter',td_msgs.msg.Int16, get_counter)
+    counter_sub = rospy.Subscriber(robot_name + '/counter',std_msgs.msg.Int16, get_counter)
     # for picker_id in range(picker_num):
     #     rospy.Subscriber('fetch'+str(picker_id+1)+'/state',std_msgs.msg.Float32, get_picker_state, picker_id)
 
@@ -130,7 +124,7 @@ if __name__ == "__main__":
     # main loop
     while counter < len(picker_list):
         if self_state == 0:
-            goal = get_goal_2d_client(i,robot_name)
+            goal = get_goal_2d_client(counter,robot_name)
             print "moving to {}".format(goal)
             move_base.goto(goal[0], goal[1], goal[2])
         

@@ -2,6 +2,7 @@
 
 import actionlib
 import rospy
+import std_msgs.msg
 
 from math import sin, cos, sqrt, atan2
 from geometry_msgs.msg import PoseStamped, Pose
@@ -85,7 +86,7 @@ def get_counter(msg):
 
 if __name__ == "__main__":
 
-    transporter_list = [1,1]
+    trans_list = [1,1]
     # Create a node
 
 
@@ -103,7 +104,7 @@ if __name__ == "__main__":
     # create the needed subscribers and service clients 
     get_model_srv = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
     state_sub = rospy.Subscriber(robot_name + '/state', std_msgs.msg.Float32, get_state)
-    counter_sub = rospy.Subscriber(robot_name + '/counter',td_msgs.msg.Int16, get_counter)
+    counter_sub = rospy.Subscriber(robot_name + '/counter',std_msgs.msg.Int16, get_counter)
     
     
     # rospy.Subscriber('fetch'+str(picker_id)+'/state',std_msgs.msg.Float32, get_picker_state, picker_id)
@@ -123,18 +124,18 @@ if __name__ == "__main__":
 
 
     # main loop
-    while counter < len(picker_list):
+    while counter < len(trans_list):
         if self_state == 0:
-            goal = get_goal_2d_client(i,robot_name)
+            goal = get_goal_2d_client(counter,robot_name)
             print "moving to {}".format(goal)
             move_base.goto(goal[0], goal[1], goal[2])
         elif self_state == 4:
             picker_name = robot_name
-            transporter_name = 'freight'+str(transporter_list[counter])
+            trans_name = 'freight'+str(trans_list[counter])
             model_p = GetModelStateRequest()
             model_t = GetModelStateRequest()
             model_p.model_name=picker_name
-            model_t.model_name=transporter_name
+            model_t.model_name=trans_name
             model_p.relative_entity_name='ground_plane'
             model_t.relative_entity_name='ground_plane'
             result_p = get_model_srv(model_p)

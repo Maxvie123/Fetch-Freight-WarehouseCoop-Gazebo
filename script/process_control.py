@@ -19,7 +19,7 @@ from warehousetest.srv import GetGripperGoal, GetGripperGoalResponse
 
 
 picker_state = []
-transporter_state = []
+trans_state = []
 
 
 # return action status
@@ -70,9 +70,8 @@ class freight_process():
 		rospy.Subscriber(robotname+'/move_base/status', actionlib_msgs.msg.GoalStatusArray, return_status, queue_size = 1)
 		self.state_pub = rospy.Publisher(robotname+'/state', std_msgs.msg.Float32, queue_size = 1)
 		self.counter_pub = rospy.Publisher(robotname+'/counter', std_msgs.msg.Int16, queue_size = 1)
-		# for picker_id in (range(picker_num)):
-		# 	rospy.Subscriber('fetch'+str(picker_id+1)+'/state', std_msgs.msg.Float32, self.get_picker_state, freight_process.picker_index[picker_id])
-		rospy.Subscriber('fetch1'+'/state', std_msgs.msg.Float32, self.get_picker_state, 1)
+		for picker_id in (range(picker_num)):
+			rospy.Subscriber('fetch'+str(picker_id+1)+'/state', std_msgs.msg.Float32, self.get_picker_state, freight_process.picker_index[picker_id])
 		
 		# misc varibles 
 		self.robotname = robotname
@@ -95,6 +94,7 @@ class freight_process():
 	def get_picker_state(self,msg, picker_id):
 
 		picker_state[picker_id-1] = msg.data
+		print "picker {} state: {}".format(picker_id, picker_state[picker_id-1])
 		return	
 
 
@@ -133,6 +133,7 @@ class freight_process():
 				rospy.loginfo(self.robotname+" got the items from picker")
 
 			if (self.state == 4):
+				counter = counter + 1
 				rospy.sleep(2)
 				self.state = 0
 				rospy.loginfo(self.robotname+" is idle (ready for new task)")
@@ -147,10 +148,12 @@ class freight_process():
 
 class fetch_process():
 
-	global transporter_num
-	global transporter_state
-	transporter_num = 3
-	transporter_state = []
+	global trans_num
+	global trans_state
+	trans_num = 3
+	trans_state = [0,0,0]
+	trans_index = [1,2,3]
+
 
 	# initialize the node and create two services for 2d navigation goal and gripper goal. create a subscriber for 
 	def __init__(self,robotname):
@@ -162,8 +165,9 @@ class fetch_process():
 		rospy.Subscriber(robotname+'/move_group/status', actionlib_msgs.msg.GoalStatusArray, return_gripper_status, queue_size = 1)
 		self.state_pub = rospy.Publisher(robotname+'/state', std_msgs.msg.Float32, queue_size = 1)
 		self.counter_pub = rospy.Publisher(robotname+'/counter', std_msgs.msg.Int16, queue_size = 1)
-		for transporter_id in (range(transporter_num)):
-			rospy.Subscriber('freight'+str(transporter_id+1)+'/state', std_msgs.msg.Float32, self.get_transporter_state, transporter_id)
+		for trans_id in (range(trans_num)):
+			rospy.Subscriber('freight'+str(trans_id+1)+'/state', std_msgs.msg.Float32, self.get_trans_state, fetch_process.trans_index[trans_id])
+
 
 		# misc varibles 
 		self.robotname = robotname
@@ -182,9 +186,10 @@ class fetch_process():
 			return GetGoalResponse([robot1_x_list[p], robot1_y_list[p], 0])
 
 
-	def get_transporter_state(self, msg, transporter_id):
+	def get_trans_state(self, msg, trans_id):
 
-		transporter_state[transporter_id+1] = msg.data
+		trans_state[trans_id-1] = msg.data
+		print "transporter {} state: {}".format(trans_id, trans_state[trans_id-1])
 		return
 
 
@@ -217,7 +222,7 @@ class fetch_process():
 				counter = counter + 1
 				rospy.sleep(2)
 			elif (self.state == 2 and robot_list[counter] != 0):
-				transporter_id = robot_list[counter]
+				trans_id = robot_list[counter]
 				self.state = 3
 
 			if (self.state == 3 and g_status == 1):
@@ -229,14 +234,14 @@ class fetch_process():
 			elif (self.state == 3.2 and g_status == 1):
 				self.state = 3.3
 				rospy.loginfo(self.robotname+" back to default arm position")
-			elif (self.state == 3.2 and g_status == 3 and transporter_state[transporter_id-1] == 3):
+			elif (self.state == 3.2 and g_status == 3 and trans_state[trans_id-1] == 3):
 				self.state = 4
-				rospy.loginfo(self.robotname+" is ready to place item to transporter")
+				rospy.loginfo(self.robotname+" is ready to place item to trans")
 
 
 			if (self.state == 4 and status == 1):
 				self.state = 4.1
-				rospy.loginfo(self.robotname+" is moving to transporter")
+				rospy.loginfo(self.robotname+" is moving to trans")
 			elif (self.state == 4.1 and status == 3):
 				self.state = 4.2
 				rospy.loginfo(self.robotname+" reach cooperation position")
@@ -250,9 +255,10 @@ class fetch_process():
 				self.state = 4.5
 				rospy.loginfo(self.robotname+" back to default arm position")
 			elif (self.state == 4.5 and g_status == 3):
-				self.state = 0
+				counter = counter + 1
 				rospy.loginfo(self.robotname+" is idle (ready for new task)")
 				rospy.sleep(2)
+				self.state = 0
 
 			self.counter = counter
 			self.state_pub.publish(self.state)
@@ -265,12 +271,12 @@ if __name__ == "__main__":
 
 
 	robot1_x_list = [-4,-4]
-	robot1_y_list = [-7,5]
+	robot1_y_list = [5,-7]
 	robot_list =[1,1]
 
 
 
-	robot1 = freight_process("freight2")
+	robot1 = freight_process("freight1")
 
 	rospy.sleep(2)
 
