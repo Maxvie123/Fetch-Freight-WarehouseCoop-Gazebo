@@ -96,6 +96,7 @@ class MoveGroupPythonInteface(object):
       joint_goal[4] = joint_value[4]
       joint_goal[5] = joint_value[5]
       joint_goal[6] = joint_value[6]
+      print "{}".format(joint_goal)
 
       # The go command can be called with joint values, poses, or without any
       # parameters if you have already set the pose or joint target for the group
@@ -147,38 +148,45 @@ class MoveGroupPythonInteface(object):
 
 def get_state(msg):
 
-  if msg.data == 3:
+  state = round(msg.data,1)
+
+  if state == 3.0:
     try:
-      get_gripper_goal = rospy.ServiceProxy('/get_gripper_goal', GetGripperGoal)
+      get_gripper_goal = rospy.ServiceProxy('get_gripper_goal', GetGripperGoal)
       gg = get_gripper_goal(0.5,0.5,0.5)
       gripper_pose = geometry_msgs.msg.Pose()
       gripper_pose.orientation = geometry_msgs.msg.Quaternion(0,0,0,1)
-      gripper_pose.position = geometry_msgs.msg.Point(gg.goal[0], gg.goal[1], gg.goal[2])
+      # gripper_pose.position = geometry_msgs.msg.Point(gg.goal[0], gg.goal[1], gg.goal[2])
+      gripper_pose.position = geometry_msgs.msg.Point(0.4,0.3,0.7)
+      print"{}".format(gg)
       move_arm.go_to_pose_goal(gripper_pose)
     except rospy.ServiceException, e:
         print "Service call failed: %s"%e
-  elif (msg.data == 3.2 or msg.data == 4.4):
-    move_arm.go_to_joint_state()
-  elif msg.data == 4.2:
+  elif (state == 3.2 or state == 4.4):
+    rospy.sleep(2)
     try:
-      get_gripper_goal = rospy.ServiceProxy('/get_gripper_goal', GetGripperGoal)
-      gg = get_gripper_goal(0.5,0.0,0.5)
+      move_arm.go_to_joint_state()
+    except:
+      print"something is wrong"
+  elif state == 4.2:
+    try:
+      get_gripper_goal = rospy.ServiceProxy('get_gripper_goal', GetGripperGoal)
+      gg = get_gripper_goal(0.7,0.0,0.7)
       gripper_pose = geometry_msgs.msg.Pose()
-      gripper_pose.orientation = geometry_msgs.msg.Quaternion(0,0,0,1)
-      gripper_pose.position = geometry_msgs.msg.Point(gg.goal[0], gg.goal[1], gg.goal[2])
+      gripper_pose.orientation = geometry_msgs.msg.Quaternion(0,0.707,0,0.707)
+      gripper_pose.position = geometry_msgs.msg.Point(0.7, 0.0, 0.7)
       move_arm.go_to_pose_goal(gripper_pose)
     except rospy.ServiceException, e:
+
         print "Service call failed: %s"%e
-
   
-
 
 if __name__ == "__main__":
 
 
   move_arm = MoveGroupPythonInteface()
   move_arm.go_to_joint_state()
-  pose_sub = rospy.Subscriber('state', std_msgs.msg.Float32, get_state)
+  pose_sub = rospy.Subscriber('state', std_msgs.msg.Float32, get_state, queue_size = 1)
   rospy.sleep(2)
   rospy.spin()
 

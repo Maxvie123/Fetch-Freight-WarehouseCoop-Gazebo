@@ -4,8 +4,8 @@
    <node name="test" pkg="warehousetest" type="move_arm.py" output="screen" />
    <node name="control" pkg="warehousetest" type="fetch_main_control.py" output="screen"/>
  </group>
- <group ns="fetch2">
+<!--  <group ns="fetch2">
    <node name="test" pkg="warehousetest" type="move_arm.py" output="screen" />
    <node name="control" pkg="warehousetest" type="fetch_main_control.py" output="screen"/>
- </group>
+ </group> -->
 </launch>

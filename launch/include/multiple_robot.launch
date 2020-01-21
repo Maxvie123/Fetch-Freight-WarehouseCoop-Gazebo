@@ -18,7 +18,7 @@
     </include>
   </group>
   <!-- BEGIN FREIGHT_ROBOT 2 -->
-<!--   <group ns="freight2">
+  <group ns="freight2">
     <param name="tf_prefix" value="freight2_tf" />
     <include file="$(find warehousetest)/launch/include/freight_onerobot.launch" >
       <arg name="x" value ="4" />
@@ -27,7 +27,7 @@
       <arg name="robot_name" value="freight2" />
       <arg name="type" value="freight"/>
     </include>
-  </group> -->
+  </group>
   <!-- BEGIN FETCH_ROBOT 1 -->
   <group ns="fetch1">
     <param name="tf_prefix" value="fetch1_tf" />

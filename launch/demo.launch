@@ -1,9 +1,12 @@
 <launch>
 
-<!-- 	<node name="demo_p1" pkg="warehousetest" type="navigation_freight.py" output="screen" >
+	<node name="demo_t1" pkg="warehousetest" type="navigation_freight.py" output="screen" >
 		<param name="robot_name" value="freight1"/>
-	</node>  -->
-	<node name="demo_t1" pkg="warehousetest" type="navigation_fetch.py" output="screen"> 
+	</node>
+	<node name="demo_t2" pkg="warehousetest" type="navigation_freight.py" output="screen" >
+		<param name="robot_name" value="freight2"/>
+	</node> 
+	<node name="demo_p1" pkg="warehousetest" type="navigation_fetch.py" output="screen"> 
 		<param name="robot_name" value="fetch1"/>
 	</node>
 	<!-- <node name="demo_r3" pkg="warehousetest" type="navigation_robot3.py" /> -->

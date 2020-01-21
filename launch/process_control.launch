@@ -1,3 +1,5 @@
 <launch>
-	<node name="process_r1" pkg="warehousetest" type="process_control.py" output="screen"/> 
+	<node name="process_p1" pkg="warehousetest" type="process_control.py" output="screen" args="fetch1"/> 
+	<node name="process_t1" pkg="warehousetest" type="process_control.py" output="screen" args="freight1"/>
+	<node name="process_t2" pkg="warehousetest" type="process_control.py" output="screen" args="freight2"/> 
 </launch>

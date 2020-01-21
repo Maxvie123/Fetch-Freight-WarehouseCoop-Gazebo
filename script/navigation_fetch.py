@@ -86,9 +86,9 @@ def get_counter(msg):
 
 if __name__ == "__main__":
 
-    trans_list = [1,1]
+    trans_list = [1,2,2]
     # Create a node
-
+    counter = 0
 
     rospy.init_node("navigation_demo", anonymous=True)
     node_name = rospy.get_name()
@@ -109,7 +109,7 @@ if __name__ == "__main__":
     
     # rospy.Subscriber('fetch'+str(picker_id)+'/state',std_msgs.msg.Float32, get_picker_state, picker_id)
 
-
+    rospy.sleep(2)
     #Get model position in Gazebo
     model = GetModelStateRequest()
     model.model_name=robot_name
@@ -126,6 +126,7 @@ if __name__ == "__main__":
     # main loop
     while counter < len(trans_list):
         if self_state == 0:
+            rospy.sleep(2)
             goal = get_goal_2d_client(counter,robot_name)
             print "moving to {}".format(goal)
             move_base.goto(goal[0], goal[1], goal[2])
@@ -145,7 +146,7 @@ if __name__ == "__main__":
             tx = result_t.pose.position.x
             ty = result_t.pose.position.y
             theta = atan2(ty-py,tx-px)
-            move_base.goto(tx-1*cos(theta), ty-1*sin(theta), theta)
+            move_base.goto(tx-1*cos(theta), ty-1.2*sin(theta), theta)
 
 
 
