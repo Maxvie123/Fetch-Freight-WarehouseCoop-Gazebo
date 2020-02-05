@@ -19,9 +19,8 @@ from pgm import *
 # dataFile = 'sample_racklocation.csv'
 # rawData = parseCSVstring(dataFile, returnJagged=True, fillerValue=-1, delimiter=',', commentChar='%')
 # printMatrix(rawData)
+a = ['1','2','3']
 
-s = np.linspace(255,255,100).reshape(10,10)
-
-s[1:5,1:5] = 0
+s = a[1]
 
 print s 

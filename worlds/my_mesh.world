@@ -29,6 +29,23 @@
         </collision>
       </link>
     </model>
+    
+    <model name="rack1_tag">
+      <pose>5 2 2.4  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://one.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://one.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
         
     <model name="rack2">
       <pose>10 4 0  0 0 0</pose>
@@ -42,6 +59,23 @@
         <collision name="collision">
           <geometry>
             <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    
+    <model name="rack2_tag">
+      <pose>10 2 2.4  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://two.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://two.dae</uri></mesh>
           </geometry>
         </collision>
       </link>
@@ -63,6 +97,23 @@
         </collision>
       </link>
     </model>
+    
+    <model name="rack3_tag">
+      <pose>15 2 2.4  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://three.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://three.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
         
     <model name="rack4">
       <pose>20 4 0  0 0 0</pose>
@@ -76,6 +127,23 @@
         <collision name="collision">
           <geometry>
             <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    
+    <model name="rack4_tag">
+      <pose>20 2 2.4  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://four.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://four.dae</uri></mesh>
           </geometry>
         </collision>
       </link>
@@ -97,6 +165,23 @@
         </collision>
       </link>
     </model>
+    
+    <model name="rack5_tag">
+      <pose>25 2 2.4  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://five.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://five.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
         
     <model name="rack6">
       <pose>30 4 0  0 0 0</pose>
@@ -110,6 +195,23 @@
         <collision name="collision">
           <geometry>
             <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    
+    <model name="rack6_tag">
+      <pose>30 2 2.4  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://six.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://six.dae</uri></mesh>
           </geometry>
         </collision>
       </link>
@@ -131,6 +233,23 @@
         </collision>
       </link>
     </model>
+    
+    <model name="rack7_tag">
+      <pose>35 2 2.4  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://seven.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://seven.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
         
     <model name="rack8">
       <pose>40 4 0  0 0 0</pose>
@@ -148,6 +267,23 @@
         </collision>
       </link>
     </model>
+    
+    <model name="rack8_tag">
+      <pose>40 2 2.4  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://eight.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://eight.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
         
     <model name="rack9">
       <pose>5 10 0  0 0 0</pose>
@@ -161,6 +297,23 @@
         <collision name="collision">
           <geometry>
             <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    
+    <model name="rack9_tag">
+      <pose>5 8 2.4  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://nine.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://nine.dae</uri></mesh>
           </geometry>
         </collision>
       </link>

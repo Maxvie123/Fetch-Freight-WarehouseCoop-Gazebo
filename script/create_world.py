@@ -34,6 +34,9 @@ print("Rack length:{} meters; Rack width:{} meters".format(rack_l,rack_w))
 print("Map length:{} meters ; Map width:{} meters".format(map_l,map_w))
 print("Map resolution:{} meters/pixel".format(res))
 
+
+tag_list = ['zero','one','two','three','four','five','six','seven','eight','nine']
+
 class make_coords:
 	def __init__(self, x, y):
 		# Sets the value of myCoords[box_number]
@@ -72,7 +75,7 @@ preamble = """<?xml version="1.0"?>
 
 outFile.write(preamble)
 
-# Create each rack model on the map:
+# Create each rack model and its tag on the map:
 for i in myCoords:
     rackmodel = """    
     <model name="rack{}">
@@ -93,6 +96,65 @@ for i in myCoords:
     </model>
     """.format(str(i-4), myCoords[i].x, myCoords[i].y)
     outFile.write(rackmodel)
+
+    tag_str = str(i-4)
+    if len(tag_str) == 1:
+      tagmodel = """
+    <model name="rack{}_tag">
+      <pose>{} {} {}  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://{file}.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://{file}.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    """.format(tag_str,myCoords[i].x,myCoords[i].y-2,2.4,file = tag_list[i-4])
+    else:
+      
+      tagmodel = """
+    <model name="rack{No}_tag">
+      <pose>{x} {} {z}  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://{file1}.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://{file1}.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <model name="rack{No}_tag">
+      <pose>{x} {} {z}  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://{file2}.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://{file2}.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+    """.format(No=tag_str,x=myCoords[i].x,myCoords[i].y-1, myCoords[i].y-3, z = 2.4, file1 )  
+    outFile.write(tagmodel)
 
 #finish the world file
 closing = """ 
