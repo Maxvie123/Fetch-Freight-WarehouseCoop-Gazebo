@@ -6,10 +6,11 @@
   <arg name="y" default="0.0" />
   <arg name="z" default="0.0" />
   <arg name="yaw" default="0.0" />
+  <arg name="color" default="Gray"/>
 
   <!-- urdf file for fetch robot -->
   <!-- <param name="robot_description" command="$(find xacro)/xacro.py $(find fetch_gazebo)/robots/fetch.gazebo.xacro" /> -->
-  <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/fetch.gazebo.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/fetch.gazebo.xacro color:=$(arg color)" />
   <param name="robot_name" type="str" value="$(arg robot_name)" />
   <param name="type" type="str" value="$(arg type)" />
 

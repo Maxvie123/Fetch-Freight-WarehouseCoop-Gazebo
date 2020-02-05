@@ -1,6 +1,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="freight" >
   <xacro:include filename="$(find fetch_description)/robots/freight.urdf" />
 
+  <xacro:arg name="color" default="Gray"/>
+  <xacro:property name="basecolor" value="$(arg color)" />
+
   <!-- Base is modeled as a big tub sitting on floor, with two wheels -->
   <gazebo reference="base_link">
     <kp>100000000.0</kp>
@@ -100,6 +103,11 @@
   <!-- Color the estop -->
   <gazebo reference="estop_link">
     <material>Gazebo/Red</material>
+  </gazebo>
+
+  <!-- Color the base link -->
+  <gazebo reference="base_link">
+    <material>Gazebo/${basecolor}</material>
   </gazebo>
 
   <!-- Gazebo plugin for ROS Control -->

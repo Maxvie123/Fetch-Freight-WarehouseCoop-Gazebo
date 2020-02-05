@@ -15,6 +15,7 @@
       <arg name="yaw" value ="0.08" />
       <arg name="robot_name" value="freight1" />
       <arg name="type" value="freight"/>
+      <arg name="color" value="Blue" />
     </include>
   </group>
   <!-- BEGIN FREIGHT_ROBOT 2 -->
@@ -32,10 +33,11 @@
 <!--   <group ns="fetch1">
     <param name="tf_prefix" value="fetch1_tf" />
     <include file="$(find warehousetest)/launch/include/fetch_onerobot.launch" >
-      <arg name="x" value ="0" />
-      <arg name="y" value ="-3" />
+      <arg name="x" value ="2" />
+      <arg name="y" value ="4" />
       <arg name="robot_name" value="fetch1" />
       <arg name="type" value="fetch"/>
+      <arg name="color" value="Gray"/>
     </include>
   </group> -->
   <!-- BEGIN FETCH_ROBOT 2 -->

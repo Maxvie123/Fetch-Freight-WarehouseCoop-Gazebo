@@ -6,13 +6,14 @@
   <arg name="y" default="0.0" />
   <arg name="z" default="0.0" />
   <arg name="yaw" default="0.0" />
+  <arg name="color" default="Gray" />
 
   <!-- Setup controllers -->
   <rosparam command="load"
             file="$(find warehousetest)/config/freight_controllers.yaml" />  
 
   <!-- urdf file for freight robot -->
-  <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/freight.gazebo.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro $(find warehousetest)/robots/freight.gazebo.xacro color:=$(arg color)" />
   <param name="robot_name" type="str" value="$(arg robot_name)" />
   <param name="type" type="str" value="$(arg type)" />
 

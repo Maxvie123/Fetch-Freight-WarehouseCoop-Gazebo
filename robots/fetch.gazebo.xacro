@@ -1,6 +1,9 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="fetch" >
   <xacro:include filename="$(find fetch_description)/robots/fetch.urdf" />
 
+  <xacro:arg name="color" default="Gray"/>
+  <xacro:property name="basecolor" value="$(arg color)" />
+
   <!-- Add four casters to the base -->
   <xacro:macro name="caster" params="prefix joint_x joint_y">
   <link name="${prefix}_caster_link">
@@ -355,6 +358,11 @@
   <!-- Color the estop -->
   <gazebo reference="estop_link">
     <material>Gazebo/Red</material>
+  </gazebo>
+
+  <!-- Color the base link -->
+  <gazebo reference="base_link">
+    <material>Gazebo/${basecolor}</material>
   </gazebo>
 
   <!-- Load the plugin -->

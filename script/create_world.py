@@ -118,7 +118,8 @@ for i in myCoords:
     </model>
     """.format(tag_str,myCoords[i].x,myCoords[i].y-2,2.4,file = tag_list[i-4])
     else:
-      
+      tens_digit = int(tag_str[0])
+      unit_digit = int(tag_str[1])
       tagmodel = """
     <model name="rack{No}_tag">
       <pose>{x} {} {z}  0 0 0</pose>
@@ -153,7 +154,7 @@ for i in myCoords:
         </collision>
       </link>
     </model>
-    """.format(No=tag_str,x=myCoords[i].x,myCoords[i].y-1, myCoords[i].y-3, z = 2.4, file1 )  
+    """.format(myCoords[i].y-1, myCoords[i].y-3, No=tag_str, x=myCoords[i].x, z = 2.4, file1= tag_list[tens_digit], file2= tag_list[unit_digit])  
     outFile.write(tagmodel)
 
 #finish the world file
