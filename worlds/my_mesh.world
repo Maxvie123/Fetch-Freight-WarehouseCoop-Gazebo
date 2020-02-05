@@ -7,8 +7,14 @@
     <include>
       <uri>model://sun</uri>
     </include>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_update_rate>2000</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+    </physics>
+    
     <model name="rack1">
-      <pose>-2 0 0  0 0 0</pose>
+      <pose>5 4 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -23,8 +29,9 @@
         </collision>
       </link>
     </model>
+        
     <model name="rack2">
-      <pose>-2 6 0  0 0 0</pose>
+      <pose>10 4 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -39,8 +46,9 @@
         </collision>
       </link>
     </model>
+        
     <model name="rack3">
-      <pose>-2 -6 0  0 0 0</pose>
+      <pose>15 4 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -55,8 +63,9 @@
         </collision>
       </link>
     </model>
+        
     <model name="rack4">
-      <pose>2 -6 0  0 0 0</pose>
+      <pose>20 4 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -71,8 +80,9 @@
         </collision>
       </link>
     </model>
+        
     <model name="rack5">
-      <pose>2 0 0  0 0 0</pose>
+      <pose>25 4 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -87,8 +97,9 @@
         </collision>
       </link>
     </model>
+        
     <model name="rack6">
-      <pose>2 6 0  0 0 0</pose>
+      <pose>30 4 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -103,8 +114,9 @@
         </collision>
       </link>
     </model>
+        
     <model name="rack7">
-      <pose>-6 0 0  0 0 0</pose>
+      <pose>35 4 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -119,8 +131,9 @@
         </collision>
       </link>
     </model>
+        
     <model name="rack8">
-      <pose>-6 6 0  0 0 0</pose>
+      <pose>40 4 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -135,8 +148,9 @@
         </collision>
       </link>
     </model>
+        
     <model name="rack9">
-      <pose>-6 -6 0  0 0 0</pose>
+      <pose>5 10 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -151,8 +165,9 @@
         </collision>
       </link>
     </model>
+        
     <model name="rack10">
-      <pose>6 -6  0 0 0</pose>
+      <pose>10 10 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -167,8 +182,9 @@
         </collision>
       </link>
     </model>
+        
     <model name="rack11">
-      <pose>6 0 0  0 0 0</pose>
+      <pose>15 10 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -183,8 +199,9 @@
         </collision>
       </link>
     </model>
+        
     <model name="rack12">
-      <pose>6 6 0  0 0 0</pose>
+      <pose>20 10 0  0 0 0</pose>
       <static>true</static>
       <link name="body">
         <visual name="visual">
@@ -199,5 +216,482 @@
         </collision>
       </link>
     </model>
+        
+    <model name="rack13">
+      <pose>25 10 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack14">
+      <pose>30 10 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack15">
+      <pose>35 10 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack16">
+      <pose>40 10 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack17">
+      <pose>5 16 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack18">
+      <pose>10 16 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack19">
+      <pose>15 16 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack20">
+      <pose>20 16 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack21">
+      <pose>25 16 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack22">
+      <pose>30 16 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack23">
+      <pose>35 16 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack24">
+      <pose>40 16 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack25">
+      <pose>5 22 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack26">
+      <pose>10 22 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack27">
+      <pose>15 22 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack28">
+      <pose>20 22 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack29">
+      <pose>25 22 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack30">
+      <pose>30 22 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack31">
+      <pose>35 22 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack32">
+      <pose>40 22 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack33">
+      <pose>5 28 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack34">
+      <pose>10 28 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack35">
+      <pose>15 28 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack36">
+      <pose>20 28 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack37">
+      <pose>25 28 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack38">
+      <pose>30 28 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack39">
+      <pose>35 28 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+        
+    <model name="rack40">
+      <pose>40 28 0  0 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <mesh><uri>file://warehouserack.dae</uri></mesh>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+     
   </world>
 </sdf>

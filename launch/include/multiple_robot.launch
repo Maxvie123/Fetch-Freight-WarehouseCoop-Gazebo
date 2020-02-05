@@ -10,15 +10,15 @@
   <group ns="freight1">
     <param name="tf_prefix" value="freight1_tf" />
     <include file="$(find warehousetest)/launch/include/freight_onerobot.launch" >
-      <arg name="x" value ="0" />
-      <arg name="y" value ="-1" />
+      <arg name="x" value ="2" />
+      <arg name="y" value ="2" />
       <arg name="yaw" value ="0.08" />
       <arg name="robot_name" value="freight1" />
       <arg name="type" value="freight"/>
     </include>
   </group>
   <!-- BEGIN FREIGHT_ROBOT 2 -->
-  <group ns="freight2">
+<!--   <group ns="freight2">
     <param name="tf_prefix" value="freight2_tf" />
     <include file="$(find warehousetest)/launch/include/freight_onerobot.launch" >
       <arg name="x" value ="4" />
@@ -27,9 +27,9 @@
       <arg name="robot_name" value="freight2" />
       <arg name="type" value="freight"/>
     </include>
-  </group>
+  </group> -->
   <!-- BEGIN FETCH_ROBOT 1 -->
-  <group ns="fetch1">
+<!--   <group ns="fetch1">
     <param name="tf_prefix" value="fetch1_tf" />
     <include file="$(find warehousetest)/launch/include/fetch_onerobot.launch" >
       <arg name="x" value ="0" />
@@ -37,7 +37,7 @@
       <arg name="robot_name" value="fetch1" />
       <arg name="type" value="fetch"/>
     </include>
-  </group>
+  </group> -->
   <!-- BEGIN FETCH_ROBOT 2 -->
 <!--   <group ns="fetch2">
     <param name="tf_prefix" value="fetch2_tf" />
