@@ -6,6 +6,7 @@ import numpy as np
 from pgm import *
 import math
 import random
+import csv
 # picker1 = pd.read_csv("../testdata/picker1.csv")
 
 # a = 'fetch1'
@@ -54,7 +55,9 @@ import random
 
 
 
-r = float('inf')
+a = ['1','2']
 
+r = map(int, a)
 
-print r > 1000
+print r
+

@@ -6,6 +6,7 @@
 # The purpose of this file is to correctly publish current pose infomation to 
 # the correspoding robot and publish robot states.
 # Author: Jingwei Liu
+# Version 1.0
 # Date: 01/06/2020
 ############################################################################
 
