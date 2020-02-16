@@ -6,7 +6,7 @@
   <arg name="y" default="0.0" />
   <arg name="z" default="0.0" />
   <arg name="yaw" default="0.0" />
-  <arg name="color" default="Gray"/>
+  <arg name="color" default="Gray" />
 
   <!-- urdf file for fetch robot -->
   <!-- <param name="robot_description" command="$(find xacro)/xacro.py $(find fetch_gazebo)/robots/fetch.gazebo.xacro" /> -->

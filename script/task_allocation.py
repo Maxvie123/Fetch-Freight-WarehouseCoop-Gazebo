@@ -15,6 +15,7 @@ import random
 import numpy as np
 import sys
 from parseCSVstring import *
+import pandas as pd
 
 
 if len(sys.argv) == 5:
@@ -27,11 +28,14 @@ else:
 	quit()
 
 
-def list_type_converter(l,dtype=int):
+def list_type_converter(l,dtype=float):
 	return list(map(dtype,l))
 
+def list_to_dataframe(l):
+	return pd.DataFrame({'data':l})
+
 # set seeds
-random.seed(101)
+random.seed(19)
 # generate item list need to be picked
 item_list = random.sample(xrange(0, slot_qty), item_qty)
 
@@ -113,17 +117,65 @@ while np.count_nonzero(t_list) != 0 or len(t_list) != picker_qty:
 		flag = flag + 1
 		t_list = picker_matrix[:,flag].tolist()
 
-# get the position data in the map frame for picker and transporter
+# get the position data in the map frame for picker and transporter into dataframes
 rawData = parseCSVstring('../testdata/picker_slot_x.csv', returnJagged=True, fillerValue=-1, delimiter=',', commentChar='%')
 picker_slot_x = list_type_converter(rawData[0])
+psx_df = list_to_dataframe(picker_slot_x)
 rawData = parseCSVstring('../testdata/picker_slot_y.csv', returnJagged=True, fillerValue=-1, delimiter=',', commentChar='%')
 picker_slot_y = list_type_converter(rawData[0])
+psy_df = list_to_dataframe(picker_slot_y)
 rawData = parseCSVstring('../testdata/trans_slot_x.csv', returnJagged=True, fillerValue=-1, delimiter=',', commentChar='%')
 trans_slot_x = list_type_converter(rawData[0])
+tsx_df = list_to_dataframe(trans_slot_x)
 rawData = parseCSVstring('../testdata/trans_slot_y.csv', returnJagged=True, fillerValue=-1, delimiter=',', commentChar='%')
 trans_slot_y = list_type_converter(rawData[0])
+tsy_df = list_to_dataframe(trans_slot_y)
 
-# generate the csv file for each picker
+# generate the csv files for each picker
 for i in range(picker_qty):
-	p_list = picker_matrix[i,:].tolist()
-	
+	df = pd.DataFrame([])
+	p_list = picker_matrix[i,:][np.nonzero(picker_matrix[i,:])].tolist()
+	colname1 = 'fetch'+str(i+1)+'_x'
+	colname2 = 'fetch'+str(i+1)+'_y'
+	colname3 = 'fetch'+str(i+1)+'_partner'
+	colname4 = 'fetch'+str(i+1)+'_yaw'
+	df[colname1] = psx_df['data'].ix[p_list]
+	df[colname2] = psy_df['data'].ix[p_list]
+	counter = 0
+	partner_list = []
+	yaw_list = []
+	for j in p_list:
+		result = np.where(trans_matrix == j)
+		partner_list.append(result[0][0]+1)
+		if (j%8) < 4:
+			yaw_list.append(0)
+		else:
+			yaw_list.append(180)
+		counter += 1
+	df[colname3] = partner_list
+	df[colname4] = yaw_list
+	filename = '../testdata/fetch'+str(i+1)+'.csv'
+	df.to_csv(filename,index=False)
+
+# generate the csv files for each transporter
+for i in range(trans_qty):
+	df = pd.DataFrame([])
+	t_list = trans_matrix[i,:][np.nonzero(trans_matrix[i,:])].tolist()
+	colname1 = 'freight'+str(i+1)+'_x'
+	colname2 = 'freight'+str(i+1)+'_y'
+	colname3 = 'freight'+str(i+1)+'_partner'
+	colname4 = 'freight'+str(i+1)+'_yaw'	
+	df[colname1] = tsx_df['data'].ix[t_list]
+	df[colname2] = tsy_df['data'].ix[t_list]
+	counter = 0
+	partner_list = []
+	yaw_list = []
+	for j in t_list:
+		result = np.where(picker_matrix == j)
+		partner_list.append(result[0][0]+1)
+		yaw_list.append(0)
+		counter +=1
+	df[colname3] = partner_list
+	df[colname4] = yaw_list
+	filename = '../testdata/freight'+str(i+1)+'.csv'
+	df.to_csv(filename,index=False)

@@ -32,7 +32,7 @@ base_controller:
   linear:
     x:
       has_velocity_limits    : true
-      max_velocity           : 0.75  # m/s
+      max_velocity           : 1.5  # m/s
       min_velocity           : -0.5 # m/s
       has_acceleration_limits: true
       max_acceleration       : 1  # m/s^2
@@ -40,6 +40,6 @@ base_controller:
   angular:
     z:
       has_velocity_limits    : true
-      max_velocity           : 0.75  # rad/s
+      max_velocity           : 1.5  # rad/s
       has_acceleration_limits: true
       max_acceleration       : 2  # rad/s^2

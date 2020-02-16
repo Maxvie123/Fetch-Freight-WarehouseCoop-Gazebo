@@ -63,13 +63,13 @@ def handle_get_gripper_goal(req):
 
 class freight_process():
 
-	global picker_num
-	global picker_state
-	global picker_partner
-	picker_num = 2
-	picker_state = [0,0]
-	picker_index = [1,2]
-	picker_partner = [-1,-1]
+	global picker_num		# picker quantity
+	global picker_state 	# picker state
+	global picker_partner	# which picker associated with current transporter(freight)
+	picker_num = 3
+	picker_state = [0]*picker_num	# create all zero list which lisr length equal to pciker_num
+	picker_index = range(1,picker_num+1)
+	picker_partner = [-1]*picker_num
 
 	def __init__(self,robotname):
 
@@ -96,7 +96,7 @@ class freight_process():
 		p = req.goal_index
 		if p == self.counter:
 			print "Get request for goal No.{}.".format(p)
-			return GetGoalResponse([robot1_x_list[p], robot1_y_list[p], 0])
+			return GetGoalResponse([robot1_x_list[p], robot1_y_list[p], robot1_yaw_list[p]])
 
 
 
@@ -166,13 +166,13 @@ class freight_process():
 
 class fetch_process():
 
-	global trans_num
-	global trans_state
-	global trans_partner
-	trans_num = 3
-	trans_state = [0,0,0]
-	trans_index = [1,2,3]
-	trans_partner = [-1,-1,-1]
+	global trans_num		# transporter quantity
+	global trans_state		# transporter state
+	global trans_partner	# which transporter associated with current picker(fetch)
+	trans_num = 2
+	trans_state = [0]*trans_num	# create all zero list which lisr length equal to trans_num
+	trans_index = range(1,trans_num+1)
+	trans_partner = [-1]*trans_num
 
 	# initialize the node and create two services for 2d navigation goal and gripper goal. create a subscriber for 
 	def __init__(self,robotname):
@@ -203,7 +203,7 @@ class fetch_process():
 		p = req.goal_index
 		if p == self.counter:
 			print "Get request for goal No.{}.".format(p)
-			return GetGoalResponse([robot1_x_list[p], robot1_y_list[p], 0])
+			return GetGoalResponse([robot1_x_list[p], robot1_y_list[p], robot1_yaw_list[p]])
 
 
 	def get_trans_state(self, msg, trans_id):
@@ -265,7 +265,7 @@ class fetch_process():
 				rospy.sleep(2)
 				self.state = 3.4
 				rospy.loginfo(self.robotname+" is ready to place item to trans")
-			elif (self.state == 3.4 and my_id == trans_partner[trans_id-1]):
+			elif (self.state == 3.4 and my_id == trans_partner[trans_id-1] and trans_state[trans_id-1] == 3):
 				self.state = 4
 
 
@@ -312,10 +312,12 @@ if __name__ == "__main__":
 
 	x_colname = file_name +"_x"
 	y_colname = file_name +"_y"
+	yaw_colname = file_name +"_yaw"
 	partner_colname = file_name +"_partner"
 
 	robot1_x_list = df[x_colname].tolist()
 	robot1_y_list = df[y_colname].tolist()
+	robot1_yaw_list = df[yaw_colname].tolist()
 	robot_list = df[partner_colname].tolist()
 
 	if "fetch" in file_name:

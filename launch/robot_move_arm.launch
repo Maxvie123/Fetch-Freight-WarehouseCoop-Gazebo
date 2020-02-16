@@ -1,11 +1,20 @@
 <launch>
 
-<!--  <group ns="fetch1">
+ <group ns="fetch1">
    <node name="test" pkg="warehousetest" type="move_arm.py" output="screen" />
    <node name="control" pkg="warehousetest" type="fetch_main_control.py" output="screen"/>
- </group> -->
-<!--  <group ns="fetch2">
+ </group>
+ <group ns="fetch2">
    <node name="test" pkg="warehousetest" type="move_arm.py" output="screen" />
    <node name="control" pkg="warehousetest" type="fetch_main_control.py" output="screen"/>
- </group> -->
+ </group>
+  <group ns="fetch3">
+   <node name="test" pkg="warehousetest" type="move_arm.py" output="screen" />
+   <node name="control" pkg="warehousetest" type="fetch_main_control.py" output="screen"/>
+ </group>
+ <group ns="fetch4">
+   <node name="test" pkg="warehousetest" type="move_arm.py" output="screen" />
+   <node name="control" pkg="warehousetest" type="fetch_main_control.py" output="screen"/>
+ </group>
+
 </launch>

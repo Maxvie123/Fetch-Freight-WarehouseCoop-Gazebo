@@ -225,13 +225,13 @@ for i in range(slot_qty):
   if slot_id < 4:
     picker_slot_x[i] = rack_center_x - 2
     picker_slot_y[i] = rack_center_y +(slot_id-1.5)
-    trans_slot_x[i] = rack_center_x - 2.5
-    trans_slot_y[i] = rack_center_y
+    trans_slot_x[i] = rack_center_x - 2
+    trans_slot_y[i] = rack_center_y + 2.5
   else:
     picker_slot_x[i] = rack_center_x + 2
     picker_slot_y[i] = rack_center_y +(slot_id-5.5)
-    trans_slot_x[i] = rack_center_x + 2.5
-    trans_slot_y[i] = rack_center_y 
+    trans_slot_x[i] = rack_center_x + 2
+    trans_slot_y[i] = rack_center_y +2.5
 
 # store the position data in csv files
 with open('../testdata/picker_slot_x.csv','w') as csvfile:

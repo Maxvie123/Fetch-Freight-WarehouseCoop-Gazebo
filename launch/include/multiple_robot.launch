@@ -11,44 +11,79 @@
     <param name="tf_prefix" value="freight1_tf" />
     <include file="$(find warehousetest)/launch/include/freight_onerobot.launch" >
       <arg name="x" value ="2" />
-      <arg name="y" value ="2" />
+      <arg name="y" value ="1" />
       <arg name="yaw" value ="0.08" />
       <arg name="robot_name" value="freight1" />
       <arg name="type" value="freight"/>
-      <arg name="color" value="Blue" />
+      <arg name="color" value="Orange" />
     </include>
   </group>
   <!-- BEGIN FREIGHT_ROBOT 2 -->
-<!--   <group ns="freight2">
+  <group ns="freight2">
     <param name="tf_prefix" value="freight2_tf" />
     <include file="$(find warehousetest)/launch/include/freight_onerobot.launch" >
-      <arg name="x" value ="4" />
-      <arg name="y" value ="-1" />
+      <arg name="x" value ="2" />
+      <arg name="y" value ="4" />
       <arg name="yaw" value ="0.08" />
       <arg name="robot_name" value="freight2" />
       <arg name="type" value="freight"/>
+      <arg name="color" value="Yellow" />
     </include>
-  </group> -->
+  </group>
+  <!-- BEGIN FREIGHT_ROBOT 3 -->
+<!--   <group ns="freight3">
+    <param name="tf_prefix" value="freight3_tf" />
+    <include file="$(find warehousetest)/launch/include/freight_onerobot.launch" >
+      <arg name="x" value ="2" />
+      <arg name="y" value ="6" />
+      <arg name="yaw" value ="0.08" />
+      <arg name="robot_name" value="freight3" />
+      <arg name="type" value="freight"/>
+      <arg name="color" value="Green" />
+    </include>
+  </group>   -->
   <!-- BEGIN FETCH_ROBOT 1 -->
-<!--   <group ns="fetch1">
+  <group ns="fetch1">
     <param name="tf_prefix" value="fetch1_tf" />
     <include file="$(find warehousetest)/launch/include/fetch_onerobot.launch" >
       <arg name="x" value ="2" />
-      <arg name="y" value ="4" />
+      <arg name="y" value ="8" />
       <arg name="robot_name" value="fetch1" />
       <arg name="type" value="fetch"/>
-      <arg name="color" value="Gray"/>
+      <arg name="color" value="Orange"/>
     </include>
-  </group> -->
+  </group>
   <!-- BEGIN FETCH_ROBOT 2 -->
-<!--   <group ns="fetch2">
+  <group ns="fetch2">
     <param name="tf_prefix" value="fetch2_tf" />
     <include file="$(find warehousetest)/launch/include/fetch_onerobot.launch" >
-      <arg name="x" value ="4" />
-      <arg name="y" value ="-3" />
+      <arg name="x" value ="2" />
+      <arg name="y" value ="10" />
       <arg name="robot_name" value="fetch2" />
       <arg name="type" value="fetch"/>
+      <arg name="color" value="Yellow" />
+    </include>
+  </group>
+  <!-- BEGIN FETCH_ROBOT 3 -->
+  <group ns="fetch3">
+    <param name="tf_prefix" value="fetch3_tf" />
+    <include file="$(find warehousetest)/launch/include/fetch_onerobot.launch" >
+      <arg name="x" value ="2" />
+      <arg name="y" value ="12" />
+      <arg name="robot_name" value="fetch3" />
+      <arg name="type" value="fetch"/>
+      <arg name="color" value="Green" />
+    </include>
+  </group>
+  <!-- BEGIN FETCH_ROBOT 4 -->
+<!--   <group ns="fetch4">
+    <param name="tf_prefix" value="fetch4_tf" />
+    <include file="$(find warehousetest)/launch/include/fetch_onerobot.launch" >
+      <arg name="x" value ="2" />
+      <arg name="y" value ="14" />
+      <arg name="robot_name" value="fetch4" />
+      <arg name="type" value="fetch"/>
+      <arg name="color" value="Blue" />
     </include>
   </group> -->
-
 </launch>

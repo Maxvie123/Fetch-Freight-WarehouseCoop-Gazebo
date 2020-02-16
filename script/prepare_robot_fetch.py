@@ -24,7 +24,7 @@ head_joint_positions = [0.0, 0.0]
 
 if __name__ == "__main__":
 
-    rospy.sleep(2)
+    rospy.sleep(3)
 
     # initialize the node
     rospy.init_node("prepare_simulated_robot")

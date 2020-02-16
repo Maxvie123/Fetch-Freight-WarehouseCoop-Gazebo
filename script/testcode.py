@@ -55,9 +55,17 @@ import csv
 
 
 
-a = ['1','2']
+# a = pd.DataFrame({'data':[1,2,3]})
 
-r = map(int, a)
+# a['freight_x'] = [1,2,3]
 
-print r
+# r = a['freight_x'][0]
+
+a = 5
+
+b = [-1]*a
+
+
+
+print b
 

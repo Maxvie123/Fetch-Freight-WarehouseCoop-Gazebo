@@ -13,7 +13,7 @@
   <!-- Launch navigation stack for freight1 -->
   <group ns="freight1">
     <param name="amcl/initial_pose_x" value="2" />
-    <param name="amcl/initial_pose_y" value="2" />
+    <param name="amcl/initial_pose_y" value="1" />
     <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
     	<arg name="robot_name" value="freight1" />
       <arg name="robot_type" value="freight"/>
@@ -21,36 +21,64 @@
   </group>
 
   <!-- Launch navigation stack for freight2 -->
-<!--   <group ns="freight2">
-    <param name="amcl/initial_pose_x" value="4" />
-    <param name="amcl/initial_pose_y" value="-1" />
+  <group ns="freight2">
+    <param name="amcl/initial_pose_x" value="2" />
+    <param name="amcl/initial_pose_y" value="4" />
     <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
     	<arg name="robot_name" value="freight2" />
       <arg name="robot_type" value="freight"/>
     </include>    	
+  </group>
+
+  <!-- Launch navigation stack for freight3 -->
+<!--   <group ns="freight3">
+    <param name="amcl/initial_pose_x" value="2" />
+    <param name="amcl/initial_pose_y" value="6" />
+    <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
+      <arg name="robot_name" value="freight3" />
+      <arg name="robot_type" value="freight"/>
+    </include>      
   </group> -->
 
   <!-- Launch navigation stack for fetch1 -->
-<!--   <group ns="fetch1">
-    <param name="amcl/initial_pose_x" value="0" />
-    <param name="amcl/initial_pose_y" value="-3" />
+  <group ns="fetch1">
+    <param name="amcl/initial_pose_x" value="2" />
+    <param name="amcl/initial_pose_y" value="8" />
     <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
       <arg name="robot_name" value="fetch1" />
       <arg name="robot_type" value="fetch"/>
     </include>      
-  </group> -->
+  </group>
   
   <!-- Launch navigation stack for fetch2 -->
-<!--   <group ns="fetch2">
-    <param name="amcl/initial_pose_x" value="4" />
-    <param name="amcl/initial_pose_y" value="-3" />
+  <group ns="fetch2">
+    <param name="amcl/initial_pose_x" value="2" />
+    <param name="amcl/initial_pose_y" value="10" />
     <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
       <arg name="robot_name" value="fetch2" />
       <arg name="robot_type" value="fetch"/>
     </include>      
+  </group>
+
+  <!-- Launch navigation stack for fetch3 -->
+  <group ns="fetch3">
+    <param name="amcl/initial_pose_x" value="2" />
+    <param name="amcl/initial_pose_y" value="12" />
+    <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
+      <arg name="robot_name" value="fetch3" />
+      <arg name="robot_type" value="fetch"/>
+    </include>      
+  </group>
+
+  <!-- Launch navigation stack for fetch4 -->
+<!--   <group ns="fetch4">
+    <param name="amcl/initial_pose_x" value="2" />
+    <param name="amcl/initial_pose_y" value="14" />
+    <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
+      <arg name="robot_name" value="fetch4" />
+      <arg name="robot_type" value="fetch"/>
+    </include>      
   </group> -->
-
-
 
 
 

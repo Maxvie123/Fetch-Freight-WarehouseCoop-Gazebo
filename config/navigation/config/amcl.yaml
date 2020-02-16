@@ -1,6 +1,6 @@
 # Filter
 min_particles: 500
-max_particles: 2000
+max_particles: 3000
 kld_err: 0.01
 kld_z: 0.99
 initial_cov_xx: 0.01

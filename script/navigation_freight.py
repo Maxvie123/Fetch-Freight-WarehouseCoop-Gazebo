@@ -1,9 +1,23 @@
 #! /usr/bin/env python
 
+
+
+######################################################################################
+# This file will create the movebase client and action. Also, this file will request goal 
+# if there is still somewhere the freight need to move to. 
+# Author: Jingwei Liu
+# Version:1.0
+# Date:02/15/2020
+########################################################################################
+
+
+
+
 import actionlib
 import rospy
 import std_msgs.msg
-
+import pandas as pd
+import rospkg
 from math import sin, cos, sqrt
 from geometry_msgs.msg import PoseStamped, Pose
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
@@ -85,10 +99,9 @@ def get_counter(msg):
 
 if __name__ == "__main__":
 
-    picker_list = [1,1,0]
-    # Create a node
     counter = 0
 
+    # Initial the node and get robot_name from parameter server
     rospy.init_node("navigation_demo", anonymous=True)
     node_name = rospy.get_name()
     node_namespace = rospy.get_namespace()
@@ -98,7 +111,12 @@ if __name__ == "__main__":
     else:
         robot_name = rospy.get_param(node_namespace + node_name + '/robot_name')
 
-    # print "{}".format(robot_name)
+    # Get the position sequence csv file
+    rospack = rospkg.RosPack()
+    path = rospack.get_path('warehousetest')
+    df = pd.read_csv(path+"/testdata/"+robot_name+".csv")
+    colname = robot_name+'_partner'
+    picker_list = df[colname].tolist()
 
     # create the needed subscribers and service clients 
     get_model_srv = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
