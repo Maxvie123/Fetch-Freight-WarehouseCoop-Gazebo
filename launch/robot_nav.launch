@@ -31,14 +31,14 @@
   </group>
 
   <!-- Launch navigation stack for freight3 -->
-<!--   <group ns="freight3">
+  <group ns="freight3">
     <param name="amcl/initial_pose_x" value="2" />
     <param name="amcl/initial_pose_y" value="6" />
     <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
       <arg name="robot_name" value="freight3" />
       <arg name="robot_type" value="freight"/>
     </include>      
-  </group> -->
+  </group>
 
   <!-- Launch navigation stack for fetch1 -->
   <group ns="fetch1">
@@ -71,14 +71,14 @@
   </group>
 
   <!-- Launch navigation stack for fetch4 -->
-<!--   <group ns="fetch4">
+  <group ns="fetch4">
     <param name="amcl/initial_pose_x" value="2" />
     <param name="amcl/initial_pose_y" value="14" />
     <include file="$(find warehousetest)/config/navigation/fetch_freight/move_base.launch.xml" >
       <arg name="robot_name" value="fetch4" />
       <arg name="robot_type" value="fetch"/>
     </include>      
-  </group> -->
+  </group>
 
 
 

@@ -161,7 +161,10 @@ if __name__ == "__main__":
             tx = result_t.pose.position.x
             ty = result_t.pose.position.y
             theta = atan2(ty-py,tx-px)
-            move_base.goto(tx-1.1*cos(theta), ty-1.1*sin(theta), theta)
+            if theta > 0:
+                move_base.goto(tx, ty-1.3, 1.57)
+            else:
+                move_base.goto(tx, ty+1.3, -1.57)
 
 
 

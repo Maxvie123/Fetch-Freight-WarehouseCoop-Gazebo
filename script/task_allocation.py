@@ -150,7 +150,7 @@ for i in range(picker_qty):
 		if (j%8) < 4:
 			yaw_list.append(0)
 		else:
-			yaw_list.append(180)
+			yaw_list.append(3.14)
 		counter += 1
 	df[colname3] = partner_list
 	df[colname4] = yaw_list

@@ -6,9 +6,9 @@
 	<node name="demo_t2" pkg="warehousetest" type="navigation_freight.py" output="screen" >
 		<param name="robot_name" value="freight2"/>
 	</node> 
-<!-- 	<node name="demo_t3" pkg="warehousetest" type="navigation_freight.py" output="screen" >
+	<node name="demo_t3" pkg="warehousetest" type="navigation_freight.py" output="screen" >
 		<param name="robot_name" value="freight3"/>
-	</node>  -->
+	</node> 
 	<node name="demo_p1" pkg="warehousetest" type="navigation_fetch.py" output="screen"> 
 		<param name="robot_name" value="fetch1"/>
 	</node>
@@ -18,9 +18,7 @@
 	<node name="demo_p3" pkg="warehousetest" type="navigation_fetch.py" output="screen"> 
 		<param name="robot_name" value="fetch3"/>
 	</node>
-<!-- 	<node name="demo_p4" pkg="warehousetest" type="navigation_fetch.py" output="screen"> 
+	<node name="demo_p4" pkg="warehousetest" type="navigation_fetch.py" output="screen"> 
 		<param name="robot_name" value="fetch4"/>
-	</node> -->
-	<!-- <node name="demo_r3" pkg="warehousetest" type="navigation_robot3.py" /> -->
-	<!-- <node name="demo_r4" pkg="warehousetest" type="navigation_robot4.py" /> -->
+	</node>
 </launch>

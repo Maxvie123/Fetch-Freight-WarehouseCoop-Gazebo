@@ -31,7 +31,7 @@
     </include>
   </group>
   <!-- BEGIN FREIGHT_ROBOT 3 -->
-<!--   <group ns="freight3">
+  <group ns="freight3">
     <param name="tf_prefix" value="freight3_tf" />
     <include file="$(find warehousetest)/launch/include/freight_onerobot.launch" >
       <arg name="x" value ="2" />
@@ -41,7 +41,7 @@
       <arg name="type" value="freight"/>
       <arg name="color" value="Green" />
     </include>
-  </group>   -->
+  </group>  
   <!-- BEGIN FETCH_ROBOT 1 -->
   <group ns="fetch1">
     <param name="tf_prefix" value="fetch1_tf" />
@@ -76,7 +76,7 @@
     </include>
   </group>
   <!-- BEGIN FETCH_ROBOT 4 -->
-<!--   <group ns="fetch4">
+  <group ns="fetch4">
     <param name="tf_prefix" value="fetch4_tf" />
     <include file="$(find warehousetest)/launch/include/fetch_onerobot.launch" >
       <arg name="x" value ="2" />
@@ -85,5 +85,5 @@
       <arg name="type" value="fetch"/>
       <arg name="color" value="Blue" />
     </include>
-  </group> -->
+  </group>
 </launch>

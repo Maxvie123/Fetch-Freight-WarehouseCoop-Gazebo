@@ -2,8 +2,8 @@
 	<node name="process_p1" pkg="warehousetest" type="process_control.py" output="screen" args="fetch1"/>
 	<node name="process_p2" pkg="warehousetest" type="process_control.py" output="screen" args="fetch2"/> 
 	<node name="process_p3" pkg="warehousetest" type="process_control.py" output="screen" args="fetch3"/> 
-	<!-- <node name="process_p4" pkg="warehousetest" type="process_control.py" output="screen" args="fetch4"/>   -->
+	<node name="process_p4" pkg="warehousetest" type="process_control.py" output="screen" args="fetch4"/>  
 	<node name="process_t1" pkg="warehousetest" type="process_control.py" output="screen" args="freight1"/>
 	<node name="process_t2" pkg="warehousetest" type="process_control.py" output="screen" args="freight2"/> 
-	<!-- <node name="process_t3" pkg="warehousetest" type="process_control.py" output="screen" args="freight3"/>  -->
+	<node name="process_t3" pkg="warehousetest" type="process_control.py" output="screen" args="freight3"/> 
 </launch>

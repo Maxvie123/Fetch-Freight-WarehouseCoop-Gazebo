@@ -66,7 +66,7 @@ class freight_process():
 	global picker_num		# picker quantity
 	global picker_state 	# picker state
 	global picker_partner	# which picker associated with current transporter(freight)
-	picker_num = 3
+	picker_num = 4
 	picker_state = [0]*picker_num	# create all zero list which lisr length equal to pciker_num
 	picker_index = range(1,picker_num+1)
 	picker_partner = [-1]*picker_num
@@ -169,7 +169,7 @@ class fetch_process():
 	global trans_num		# transporter quantity
 	global trans_state		# transporter state
 	global trans_partner	# which transporter associated with current picker(fetch)
-	trans_num = 2
+	trans_num = 3
 	trans_state = [0]*trans_num	# create all zero list which lisr length equal to trans_num
 	trans_index = range(1,trans_num+1)
 	trans_partner = [-1]*trans_num
